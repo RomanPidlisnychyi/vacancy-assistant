@@ -1,0 +1,27 @@
+{
+  "name": "vacancy-assistant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon api/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RomanPidlisnychyi/vacancy-assistant.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RomanPidlisnychyi/vacancy-assistant/issues"
+  },
+  "homepage": "https://github.com/RomanPidlisnychyi/vacancy-assistant#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "joi": "^17.4.0",
+    "mongoose": "^5.11.17",
+    "morgan": "^1.10.0"
+  }
+}
