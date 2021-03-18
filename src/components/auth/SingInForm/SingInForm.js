@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
-// import { authOperations, authSelectors } from '../../redux/auth';
+import { loadingSelector } from '../../../redux/loading';
 import styles from '../SingUpForm/SingUpForm.module.css';
 
 export default function SingInForm() {
   const dispatch = useDispatch();
 
-  //   const isLoading = useSelector(authSelectors.getIsLoading);
-  const isLoading = true;
+  const isLoading = useSelector(loadingSelector);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -66,11 +65,7 @@ export default function SingInForm() {
         type="submit"
         disabled={!btnActive || isLoading}
       >
-        {!isLoading ? (
-          'SingIn'
-        ) : (
-          <Loader color="#007bff" height={22} width={45} />
-        )}
+        {!isLoading ? 'SingIn' : <Loader color="#fff" height={22} width={45} />}
       </Button>
       <Link className={styles.link} to="/register">
         SingUp
