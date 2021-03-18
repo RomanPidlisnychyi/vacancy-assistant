@@ -27,7 +27,11 @@ const token = createReducer(
   }
 );
 
+const err = createReducer(null, {
+  [authActions.register]: (_, { payload }) => payload,
+});
 export default combineReducers({
   user,
   token,
+  err,
 });

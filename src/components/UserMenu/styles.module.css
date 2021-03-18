@@ -1,0 +1,12 @@
+.span {
+    color: #79879a;
+    border-right: 1px solid #79879a;
+    padding-right: 15px;
+    margin-right: 15px;
+}
+.button {
+    color: #79879a;
+    border: none;
+    padding-left: 20px;
+    background: url(../../images/logout.svg) left no-repeat;
+}
