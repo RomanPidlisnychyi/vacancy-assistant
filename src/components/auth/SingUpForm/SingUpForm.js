@@ -1,103 +1,117 @@
-// import React, { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 // import { authOperations, authSelectors } from '../../redux/auth';
-// import { Form } from 'react-bootstrap';
-// import Loader from 'react-loader-spinner';
-// import Styles from './styles';
+import { Form, Button } from 'react-bootstrap';
+import Loader from 'react-loader-spinner';
+import styles from './SingUpForm.module.css';
 
-// export default function SingUpForm() {
-//     const dispatch = useDispatch();
+export default function SingUpForm() {
+  const dispatch = useDispatch();
 
-//     const isLoading = useSelector(authSelectors.getIsLoading);
+  // const isLoading = useSelector(authSelectors.getIsLoading);
 
-//     const [name, setName] = useState('');
-//     const [email, setEmail] = useState('');
-//     const [password, setPassword] = useState('');
-//     const [confirmPassword, setConfirmPassword] = useState('');
+  const isLoading = true;
 
-//     const nameValid = name !== '';
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-//     const emailValid = email !== '' && email.includes('@');
+  const nameValid = name !== '';
 
-//     const passwordValid = password !== '' && password.length > 7;
+  const emailValid = email.includes('@') && email.includes('.');
 
-//     const confirmPasswordValid =
-//         password === confirmPassword && confirmPassword !== '';
+  const passwordValid = password !== '' && password.length > 7;
 
-//     const btnActive =
-//         nameValid && emailValid && passwordValid && confirmPasswordValid;
+  const confirmPasswordValid =
+    password === confirmPassword && confirmPassword !== '';
 
-//     const handleSubmit = e => {
-//         e.preventDefault();
+  const btnActive =
+    nameValid && emailValid && passwordValid && confirmPasswordValid;
 
-//         dispatch(authOperations.register({ name, email, password }));
-//     };
+  const handleSubmit = e => {
+    e.preventDefault();
 
-//     return (
-//         <Form onSubmit={handleSubmit}>
-//             <Styles.FormGroup controlId="formBasicEmail">
-//                 <Styles.EmailLabel />
-//                 <Styles.EmailInput
-//                     isValid={emailValid}
-//                     type="email"
-//                     placeholder="email@example.com"
-//                     onChange={e => setEmail(e.target.value)}
-//                     value={email}
-//                 />
-//                 {!emailValid && email !== '' && (
-//                     <Styles.Span>Incorrect email!</Styles.Span>
-//                 )}
-//             </Styles.FormGroup>
-//             <Styles.FormGroup controlId="formBasicPassword">
-//                 <Styles.PasswordLabel />
-//                 <Styles.PasswordInput
-//                     isValid={passwordValid}
-//                     type="password"
-//                     placeholder="Password"
-//                     onChange={e => setPassword(e.target.value)}
-//                     value={password}
-//                 />
-//                 {!passwordValid && password !== '' && (
-//                     <Styles.Span>
-//                         the password must be at least 8 characters long!
-//                     </Styles.Span>
-//                 )}
-//             </Styles.FormGroup>
-//             <Styles.FormGroup controlId="formBasicConfirmPassword">
-//                 <Styles.PasswordLabel />
-//                 <Styles.PasswordInput
-//                     isValid={confirmPasswordValid}
-//                     type="password"
-//                     placeholder="Confirm password"
-//                     onChange={e => setConfirmPassword(e.target.value)}
-//                     value={confirmPassword}
-//                 />
-//                 {!confirmPasswordValid && confirmPassword && (
-//                     <Styles.Span>Passwords do not match!</Styles.Span>
-//                 )}
-//             </Styles.FormGroup>
-//             <Styles.FormGroup controlId="formBasicName">
-//                 <Styles.UserLabel />
-//                 <Styles.EmailInput
-//                     isValid={nameValid}
-//                     type="text"
-//                     placeholder="User name"
-//                     onChange={e => setName(e.target.value)}
-//                     value={name}
-//                 />
-//             </Styles.FormGroup>
-//             <Styles.MyButton
-//                 variant="outline-primary"
-//                 type="submit"
-//                 disabled={!btnActive}
-//             >
-//                 {!isLoading ? (
-//                     'SingUp'
-//                 ) : (
-//                     <Loader color="#007bff" height={22} width={50} />
-//                 )}
-//             </Styles.MyButton>
-//             <Styles.MyLink to="/login">SingIn</Styles.MyLink>
-//         </Form>
-//     );
-// }
+    // dispatch(authOperations.register({ name, email, password }));
+  };
+
+  return (
+    <Form className={styles.form} onSubmit={handleSubmit}>
+      <Form.Group className={styles.formGroup} controlId="formBasicName">
+        <Form.Label className={styles.userLabel} />
+        <Form.Control
+          className={styles.input}
+          isValid={nameValid}
+          type="text"
+          placeholder="User name"
+          onChange={e => setName(e.target.value)}
+          value={name}
+        />
+      </Form.Group>
+      <Form.Group className={styles.formGroup} controlId="formBasicEmail">
+        <Form.Label className={styles.emailLabel} />
+        <Form.Control
+          className={styles.input}
+          isValid={emailValid}
+          type="email"
+          placeholder="email@example.com"
+          onChange={e => setEmail(e.target.value)}
+          value={email}
+        />
+        {!emailValid && email !== '' && (
+          <span className={styles.span}>Incorrect email!</span>
+        )}
+      </Form.Group>
+
+      <Form.Group className={styles.formGroup} controlId="formBasicPassword">
+        <Form.Label className={styles.passwordLabel} />
+        <Form.Control
+          className={styles.input}
+          isValid={passwordValid}
+          type="password"
+          placeholder="Password"
+          onChange={e => setPassword(e.target.value)}
+          value={password}
+        />
+        {!passwordValid && password !== '' && (
+          <span className={styles.span}>
+            the password must be at least 8 characters long!
+          </span>
+        )}
+      </Form.Group>
+      <Form.Group
+        className={styles.formGroup}
+        controlId="formBasicConfirmPassword"
+      >
+        <Form.Label className={styles.passwordLabel} />
+        <Form.Control
+          className={styles.input}
+          isValid={confirmPasswordValid}
+          type="password"
+          placeholder="Confirm password"
+          onChange={e => setConfirmPassword(e.target.value)}
+          value={confirmPassword}
+        />
+        {!confirmPasswordValid && confirmPassword && (
+          <span className={styles.span}>Passwords do not match!</span>
+        )}
+      </Form.Group>
+      <Button
+        className={styles.button}
+        variant="outline-primary"
+        type="submit"
+        disabled={!btnActive || isLoading}
+      >
+        {!isLoading ? (
+          'SingIn'
+        ) : (
+          <Loader color="#007bff" height={22} width={45} />
+        )}
+      </Button>
+      <Link className={styles.link} to="/login">
+        SingIn
+      </Link>
+    </Form>
+  );
+}
