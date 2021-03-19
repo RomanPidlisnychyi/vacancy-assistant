@@ -30,7 +30,7 @@ export const register = async credentials => {
   try {
     const { password } = credentials;
 
-    const response = await axios.post('/auth/login', credentials);
+    const response = await axios.post('/auth/register', credentials);
 
     return { ...response.data, password };
   } catch (err) {
@@ -65,11 +65,3 @@ export const current = () => {
     })
     .catch(err => console.log(err));
 };
-
-export const fetchUserData = request =>
-  Promise.resolve({
-    name: 'John',
-    surname: 'Doe',
-    position: 'administrator',
-    email: 'johndoe@mail.com',
-  });

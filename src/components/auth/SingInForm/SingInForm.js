@@ -1,18 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 import { authOperations } from '../../../store/operations';
+import { authSelectors } from '../../../store/selectors';
 import styles from '../SingUpForm/SingUpForm.module.css';
 
 export default function SingInForm() {
   const dispatch = useDispatch();
+  const login = useSelector(authSelectors.getEmail);
+  const pass = useSelector(authSelectors.getPass);
 
   const isLoading = false;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    if (login && pass) {
+      setEmail(login);
+      setPassword(pass);
+    }
+  }, [dispatch, login, pass]);
 
   const handleSubmit = e => {
     e.preventDefault();

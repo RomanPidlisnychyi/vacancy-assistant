@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import Loader from 'react-loader-spinner';
@@ -32,13 +32,15 @@ export default function SingUpForm(props) {
   const handleSubmit = e => {
     e.preventDefault();
 
-    dispatch(authOperations({ name, email, password })).then(response => {
-      if (response.password) {
-        setTimeout(() => {
-          props.history.push('/login');
-        }, 1000);
+    dispatch(authOperations.onRegister({ name, email, password })).then(
+      response => {
+        if (response && response.password) {
+          setTimeout(() => {
+            props.history.push('/login');
+          }, 1000);
+        }
       }
-    });
+    );
   };
 
   return (

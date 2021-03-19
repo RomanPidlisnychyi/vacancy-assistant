@@ -5,6 +5,7 @@ const onRegister = credentials => async dispatch => {
   dispatch(authActions.registerReauest());
 
   const payload = await register(credentials);
+
   if (payload.name) {
     dispatch(authActions.registerSuccess(payload));
     return payload;
