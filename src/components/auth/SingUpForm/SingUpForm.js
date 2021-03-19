@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loadingSelector } from '../../../redux/loading';
 import { Form, Button } from 'react-bootstrap';
 import Loader from 'react-loader-spinner';
+import { authOperations } from '../../../store/operations';
 import styles from './SingUpForm.module.css';
 
-export default function SingUpForm() {
+export default function SingUpForm(props) {
   const dispatch = useDispatch();
 
-  const isLoading = useSelector(loadingSelector);
+  // const isLoading = useSelector(loadingSelector);
+  const isLoading = false;
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -31,7 +32,13 @@ export default function SingUpForm() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    // dispatch(authOperations.register({ name, email, password }));
+    dispatch(authOperations({ name, email, password })).then(response => {
+      if (response.password) {
+        setTimeout(() => {
+          props.history.push('/login');
+        }, 1000);
+      }
+    });
   };
 
   return (

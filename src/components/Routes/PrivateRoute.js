@@ -1,6 +1,6 @@
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { authSelectors } from '../../redux/auth';
+import { authSelectors } from '../../store/selectors';
 
 export default function PrivateRoute({ component: Component, ...rest }) {
   const isAuthenticated = useSelector(authSelectors.getToken);
@@ -9,7 +9,7 @@ export default function PrivateRoute({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={props =>
-        isAuthenticated ? <Component /> : <Redirect to="/login" />
+        isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
       }
     />
   );

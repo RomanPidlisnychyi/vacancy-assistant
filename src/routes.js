@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 
-export default [
+const routes = [
   {
     path: '/',
     label: 'Home',
@@ -54,3 +54,5 @@ export default [
     ),
   },
 ];
+
+export default routes;

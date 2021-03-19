@@ -1,6 +1,6 @@
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { authSelectors } from '../../redux/auth';
+import { authSelectors } from '../../store/selectors';
 
 export default function PublicRoute({
   component: Component,
@@ -14,7 +14,7 @@ export default function PublicRoute({
       {...rest}
       render={props =>
         !isAuthenticated || (isAuthenticated && !restricted) ? (
-          <Component />
+          <Component {...props} />
         ) : (
           <Redirect to="/" />
         )

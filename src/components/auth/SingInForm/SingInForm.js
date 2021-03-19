@@ -3,19 +3,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
-import { loadingSelector } from '../../../redux/loading';
+import { authOperations } from '../../../store/operations';
 import styles from '../SingUpForm/SingUpForm.module.css';
 
 export default function SingInForm() {
   const dispatch = useDispatch();
 
-  const isLoading = useSelector(loadingSelector);
+  const isLoading = false;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    dispatch(authOperations.onLogin({ email, password }));
     // dispatch(authOperations.logIn({ email, password }));
   };
 

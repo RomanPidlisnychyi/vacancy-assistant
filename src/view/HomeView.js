@@ -1,3 +1,11 @@
+import { LayoutView } from '../components/Layout';
+import { UserMenu } from '../components/UserMenu';
+
 export default function HomeView() {
-  return <h1>Hello from Home</h1>;
+  return (
+    <LayoutView>
+      <UserMenu />
+      <h1>Hello from Home</h1>
+    </LayoutView>
+  );
 }
