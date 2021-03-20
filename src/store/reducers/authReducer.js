@@ -34,6 +34,7 @@ const tokens = createReducer(
   {
     [loginSuccess]: (_, { payload }) => payload.tokens,
     [currentSuccess]: (_, { payload }) => payload.tokens,
+    [currentError]: () => initialTokensState,
     [logoutSuccess]: () => initialTokensState,
   }
 );
@@ -43,7 +44,6 @@ const err = createReducer(null, {
   [registerSuccess]: () => null,
   [loginError]: (_, { payload }) => payload,
   [loginSuccess]: () => null,
-  [currentError]: (_, { payload }) => payload,
 });
 
 export default combineReducers({

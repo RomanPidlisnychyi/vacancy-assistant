@@ -28,6 +28,7 @@
 
 .button {
   display: block;
+  height: 40px;
   margin: 15px auto 0;
   width: fit-content;
   color: #fff;

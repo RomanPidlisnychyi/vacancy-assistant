@@ -10,7 +10,14 @@ import {
   currentSuccess,
   currentError,
 } from '../actions/authActions';
-import { register, login, logout, current } from '../../utils/apiUtils';
+import { getAllVacancies } from '../actions/vacancyActions';
+import {
+  register,
+  login,
+  logout,
+  current,
+  vacancies,
+} from '../../utils/apiUtils';
 
 export const onRegister = credentials => async dispatch => {
   dispatch(registerReauest());
@@ -30,6 +37,8 @@ export const onLogin = credentials => async dispatch => {
   const payload = await login(credentials);
   if (payload.user) {
     dispatch(loginSuccess(payload));
+    const allVacancies = await vacancies();
+    dispatch(getAllVacancies(allVacancies));
     return;
   }
 
@@ -47,6 +56,8 @@ export const onCurrent = () => async dispatch => {
 
   if (payload.user) {
     dispatch(currentSuccess(payload));
+    const allVacancies = await vacancies();
+    dispatch(getAllVacancies(allVacancies));
     return;
   }
 

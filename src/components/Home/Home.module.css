@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  align-self: flex-start;
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 30px;
+  width: 600px;
+}
+
+.container::after {
+  position: absolute;
+  content: '';
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+}

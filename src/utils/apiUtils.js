@@ -77,3 +77,23 @@ export const current = async () => {
     return err.response.data.message;
   }
 };
+
+export const vacancies = async () => {
+  try {
+    const response = await axios.get('/vacancy');
+
+    return response.data;
+  } catch (err) {
+    console.log('err', err);
+  }
+};
+
+export const create = async vacancy => {
+  try {
+    const response = await axios.post('/vacancy', vacancy);
+
+    console.log('response', response);
+  } catch (err) {
+    console.log('err', err);
+  }
+};

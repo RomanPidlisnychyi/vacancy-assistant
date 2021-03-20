@@ -77,7 +77,7 @@ export default function SingInForm() {
         type="submit"
         disabled={!btnActive || loading}
       >
-        {!loading ? 'SingIn' : <Loader color="#fff" height={22} width={45} />}
+        {!loading ? 'SingIn' : <Loader color="#fff" height={24} width={45} />}
       </Button>
       <Link className={styles.link} to="/register">
         SingUp
