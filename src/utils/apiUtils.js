@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'https://vacancy-assistant.herokuapp.com';
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://vacancy-assistant.herokuapp.com';
 
 const token = {
   setTokens(tokens) {
@@ -78,5 +77,3 @@ export const current = async () => {
     return err.response.data.message;
   }
 };
-
-export const isLocalTokens = localStorage.getItem('vacancyTokens');

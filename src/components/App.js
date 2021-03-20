@@ -1,20 +1,22 @@
 import { Suspense, useEffect } from 'react';
 import { Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getToken } from '../store/selectors/authSelectors';
 import { onCurrent } from '../store/operations/authOperations';
 import { LayoutApp } from './Layout';
 import { PublicRoute, PrivateRoute } from './Routes';
 import routes from './../routes';
-import { isLocalTokens } from '../utils/apiUtils';
 
 export default function App() {
   const dispatch = useDispatch();
 
+  const token = useSelector(getToken);
+
   useEffect(() => {
-    if (isLocalTokens) {
+    if (token) {
       dispatch(onCurrent());
     }
-  }, [dispatch]);
+  }, [dispatch, token]);
   return (
     <LayoutApp>
       <Suspense fallback={false}>
