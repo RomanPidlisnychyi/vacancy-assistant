@@ -1,52 +1,54 @@
-import { authActions } from '../actions';
+import {
+  registerReauest,
+  registerSuccess,
+  registerError,
+  loginReauest,
+  loginSuccess,
+  loginError,
+  logoutSuccess,
+  currentReauest,
+  currentSuccess,
+  currentError,
+} from '../actions/authActions';
 import { register, login, logout, current } from '../../utils/apiUtils';
 
-const onRegister = credentials => async dispatch => {
-  dispatch(authActions.registerReauest());
+export const onRegister = credentials => async dispatch => {
+  dispatch(registerReauest());
 
   const payload = await register(credentials);
 
   if (payload.name) {
-    dispatch(authActions.registerSuccess(payload));
+    dispatch(registerSuccess(payload));
     return payload;
   }
 
-  dispatch(authActions.registerError(payload));
+  dispatch(registerError(payload));
 };
 
-const onLogin = credentials => async dispatch => {
-  dispatch(authActions.loginReauest());
+export const onLogin = credentials => async dispatch => {
+  dispatch(loginReauest());
   const payload = await login(credentials);
   if (payload.user) {
-    dispatch(authActions.loginSuccess(payload));
+    dispatch(loginSuccess(payload));
     return;
   }
 
-  dispatch(authActions.loginError(payload));
+  dispatch(loginError(payload));
 };
 
-const onLogout = () => dispatch => {
+export const onLogout = () => dispatch => {
   logout();
-  dispatch(authActions.logoutSuccess());
+  dispatch(logoutSuccess());
 };
 
-const onCurrent = () => async dispatch => {
-  dispatch(authActions.currentReauest());
+export const onCurrent = () => async dispatch => {
+  dispatch(currentReauest());
   const payload = await current();
 
   if (payload.user) {
-    dispatch(authActions.currentSuccess(payload));
+    dispatch(currentSuccess(payload));
     return;
   }
 
-  dispatch(authActions.currentError(payload));
+  dispatch(currentError(payload));
 };
-
-const authOperations = {
-  onRegister,
-  onLogin,
-  onLogout,
-  onCurrent,
-};
-
-export default authOperations;

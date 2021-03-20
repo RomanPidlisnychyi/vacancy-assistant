@@ -1,30 +1,15 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const registerReauest = createAction('REGISTER_REQUEST');
-const registerSuccess = createAction('REGISTER_SUCCESS');
-const registerError = createAction('REGISTER_ERROR');
+export const registerReauest = createAction('REGISTER_REQUEST');
+export const registerSuccess = createAction('REGISTER_SUCCESS');
+export const registerError = createAction('REGISTER_ERROR');
 
-const loginReauest = createAction('LOGIN_REQUEST');
-const loginSuccess = createAction('LOGIN_SUCCESS');
-const loginError = createAction('LOGIN_ERROR');
+export const loginReauest = createAction('LOGIN_REQUEST');
+export const loginSuccess = createAction('LOGIN_SUCCESS');
+export const loginError = createAction('LOGIN_ERROR');
 
-const logoutSuccess = createAction('LOGOUT_SUCCESS');
+export const logoutSuccess = createAction('LOGOUT_SUCCESS');
 
-const currentReauest = createAction('CURRENT_REQUEST');
-const currentSuccess = createAction('CURRENT_SUCCESS');
-const currentError = createAction('CURRENT_ERROR');
-
-const authActions = {
-  registerReauest,
-  registerSuccess,
-  registerError,
-  loginReauest,
-  loginSuccess,
-  loginError,
-  logoutSuccess,
-  currentReauest,
-  currentSuccess,
-  currentError,
-};
-
-export default authActions;
+export const currentReauest = createAction('CURRENT_REQUEST');
+export const currentSuccess = createAction('CURRENT_SUCCESS');
+export const currentError = createAction('CURRENT_ERROR');

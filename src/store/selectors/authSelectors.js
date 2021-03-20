@@ -1,8 +1,4 @@
-const getName = state => state.auth.user.name;
-const getEmail = state => state.auth.user.email;
-const getPass = state => state.auth.user.password;
-const getToken = state => state.auth.tokens.access;
-
-const authSelectors = { getName, getEmail, getPass, getToken };
-
-export default authSelectors;
+export const getName = state => state.auth.user.name;
+export const getEmail = state => state.auth.user.email;
+export const getPass = state => state.auth.user.password;
+export const getToken = state => state.auth.tokens.access;

@@ -1,7 +1,7 @@
 import { Suspense, useEffect } from 'react';
 import { Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { authOperations } from '../store/operations';
+import { onCurrent } from '../store/operations/authOperations';
 import { LayoutApp } from './Layout';
 import { PublicRoute, PrivateRoute } from './Routes';
 import routes from './../routes';
@@ -12,7 +12,7 @@ export default function App() {
 
   useEffect(() => {
     if (isLocalTokens) {
-      dispatch(authOperations.onCurrent());
+      dispatch(onCurrent());
     }
   }, [dispatch]);
   return (

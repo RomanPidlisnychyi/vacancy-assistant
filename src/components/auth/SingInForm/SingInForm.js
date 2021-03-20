@@ -3,16 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
-import { authOperations } from '../../../store/operations';
-import { authSelectors } from '../../../store/selectors';
+import { onLogin } from '../../../store/operations/authOperations';
+import { getEmail, getPass } from '../../../store/selectors/authSelectors';
+import { isLoading } from '../../../store/selectors/loadingSelectots';
 import styles from '../SingUpForm/SingUpForm.module.css';
 
 export default function SingInForm() {
   const dispatch = useDispatch();
-  const login = useSelector(authSelectors.getEmail);
-  const pass = useSelector(authSelectors.getPass);
+  const login = useSelector(getEmail);
+  const pass = useSelector(getPass);
 
-  const isLoading = false;
+  const loading = useSelector(isLoading);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,8 +28,7 @@ export default function SingInForm() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    dispatch(authOperations.onLogin({ email, password }));
-    // dispatch(authOperations.logIn({ email, password }));
+    dispatch(onLogin({ email, password }));
   };
 
   const emailValid = email.includes('@') && email.includes('.');
@@ -75,9 +75,9 @@ export default function SingInForm() {
         className={styles.button}
         variant="outline-primary"
         type="submit"
-        disabled={!btnActive || isLoading}
+        disabled={!btnActive || loading}
       >
-        {!isLoading ? 'SingIn' : <Loader color="#fff" height={22} width={45} />}
+        {!loading ? 'SingIn' : <Loader color="#fff" height={22} width={45} />}
       </Button>
       <Link className={styles.link} to="/register">
         SingUp

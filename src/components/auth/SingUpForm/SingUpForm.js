@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import Loader from 'react-loader-spinner';
-import { authOperations } from '../../../store/operations';
+import { onRegister } from '../../../store/operations/authOperations';
+import { isLoading } from '../../../store/selectors/loadingSelectots';
 import styles from './SingUpForm.module.css';
 
 export default function SingUpForm(props) {
   const dispatch = useDispatch();
 
-  // const isLoading = useSelector(loadingSelector);
-  const isLoading = false;
+  const loading = useSelector(isLoading);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -32,15 +32,13 @@ export default function SingUpForm(props) {
   const handleSubmit = e => {
     e.preventDefault();
 
-    dispatch(authOperations.onRegister({ name, email, password })).then(
-      response => {
-        if (response && response.password) {
-          setTimeout(() => {
-            props.history.push('/login');
-          }, 1000);
-        }
+    dispatch(onRegister({ name, email, password })).then(response => {
+      if (response && response.password) {
+        setTimeout(() => {
+          props.history.push('/login');
+        }, 1000);
       }
-    );
+    });
   };
 
   return (
@@ -108,9 +106,9 @@ export default function SingUpForm(props) {
         className={styles.button}
         variant="outline-primary"
         type="submit"
-        disabled={!btnActive || isLoading}
+        disabled={!btnActive || loading}
       >
-        {!isLoading ? 'SingUp' : <Loader color="#fff" height={22} width={45} />}
+        {!loading ? 'SingUp' : <Loader color="#fff" height={22} width={45} />}
       </Button>
       <Link className={styles.link} to="/login">
         SingIn
