@@ -30,6 +30,7 @@ const err = createReducer(null, {
   [authActions.registerSuccess]: () => null,
   [authActions.loginError]: (_, { payload }) => payload,
   [authActions.loginSuccess]: () => null,
+  [authActions.currentError]: (_, { payload }) => payload,
 });
 
 export default combineReducers({

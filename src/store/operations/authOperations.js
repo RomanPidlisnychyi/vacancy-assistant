@@ -1,5 +1,5 @@
 import { authActions } from '../actions';
-import { login, register } from '../../utils/apiUtils';
+import { register, login, logout, current } from '../../utils/apiUtils';
 
 const onRegister = credentials => async dispatch => {
   dispatch(authActions.registerReauest());
@@ -16,7 +16,6 @@ const onRegister = credentials => async dispatch => {
 
 const onLogin = credentials => async dispatch => {
   dispatch(authActions.loginReauest());
-
   const payload = await login(credentials);
   if (payload.user) {
     dispatch(authActions.loginSuccess(payload));
@@ -26,12 +25,28 @@ const onLogin = credentials => async dispatch => {
   dispatch(authActions.loginError(payload));
 };
 
-const onLogout = () => dispatch => {};
+const onLogout = () => dispatch => {
+  logout();
+  dispatch(authActions.logoutSuccess());
+};
+
+const onCurrent = () => async dispatch => {
+  dispatch(authActions.currentReauest());
+  const payload = await current();
+
+  if (payload.user) {
+    dispatch(authActions.currentSuccess(payload));
+    return;
+  }
+
+  dispatch(authActions.currentError(payload));
+};
 
 const authOperations = {
   onRegister,
   onLogin,
   onLogout,
+  onCurrent,
 };
 
 export default authOperations;

@@ -7,8 +7,11 @@ const token = {
   setTokens(tokens) {
     const { access, refresh } = tokens;
 
-    axios.defaults.headers.common.Authorization = `Bearer ${access}`;
-    axios.defaults.headers.common.xRefreshToken = refresh;
+    axios.defaults.headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${access}`,
+      'x-refresh-token': refresh,
+    };
 
     localStorage.setItem('vacancyTokens', JSON.stringify(tokens));
   },
@@ -20,8 +23,6 @@ const token = {
     return { access, refresh };
   },
   unset() {
-    axios.defaults.headers.common.Authorization = '';
-    axios.defaults.headers.common.xRefreshToken = '';
     localStorage.removeItem('vacancyTokens');
   },
 };
@@ -51,17 +52,31 @@ export const login = async credentials => {
   }
 };
 
-export const current = () => {
-  const getTokens = localStorage.getItem('vacancyTokens');
-  const { access, refresh } = JSON.parse(getTokens);
-  token.setAccess(access);
-  token.setRefresh(refresh);
-  return axios('/auth/getCurrent')
-    .then(response => {
-      const { access, refresh } = response.data.tokens;
-      token.setAccess(access);
-      token.setRefresh(refresh);
-      return response.data;
-    })
-    .catch(err => console.log(err));
+export const logout = () => {
+  token.unset();
 };
+
+export const current = async () => {
+  try {
+    const getTokens = localStorage.getItem('vacancyTokens');
+    const { access, refresh } = JSON.parse(getTokens);
+    let tokens = { access, refresh };
+
+    token.setTokens({ access, refresh });
+
+    const response = await axios.get('/auth/current');
+
+    const { access: accessToken } = response.data;
+    if (accessToken) {
+      token.setTokens({ access: accessToken, refresh });
+      tokens = { ...tokens, access: accessToken };
+    }
+
+    return { user: response.data.user, tokens };
+  } catch (err) {
+    token.unset();
+    return err.response.data.message;
+  }
+};
+
+export const isLocalTokens = localStorage.getItem('vacancyTokens');

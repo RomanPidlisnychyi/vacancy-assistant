@@ -110,7 +110,7 @@ export default function SingUpForm(props) {
         type="submit"
         disabled={!btnActive || isLoading}
       >
-        {!isLoading ? 'SingIn' : <Loader color="#fff" height={22} width={45} />}
+        {!isLoading ? 'SingUp' : <Loader color="#fff" height={22} width={45} />}
       </Button>
       <Link className={styles.link} to="/login">
         SingIn
