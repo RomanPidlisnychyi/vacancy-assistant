@@ -1,14 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { InputGroup, Form, Button } from 'react-bootstrap';
-import { isLoading } from '../../store/selectors/loadingSelectots';
-import { getFilter } from '../../store/selectors/filterSelectors';
-import { setFilter } from '../../store/actions/filterActions';
-import styles from './Input.module.css';
+import { getFilter } from '../../../store/selectors/filterSelectors';
+import { setFilter } from '../../../store/actions/filterActions';
+import styles from './MainInput.module.css';
 
-export default function Input({ handleModal }) {
+export default function MainInput({ handleModal }) {
   const dispatch = useDispatch();
 
-  const loading = useSelector(isLoading);
   const filter = useSelector(getFilter);
 
   const handleInput = e => dispatch(setFilter(e.target.value));

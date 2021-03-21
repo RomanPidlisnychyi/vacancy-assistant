@@ -12,9 +12,9 @@ export default function UserMenu() {
 
   return (
     <div className={styles.container}>
-      <span className={styles.span}>{name}</span>
+      <span className={styles.name}>{name}</span>
       <button className={styles.button} type="button" onClick={logout}>
-        Logout
+        <span className={styles.buttonTitle}>Logout</span>
       </button>
     </div>
   );

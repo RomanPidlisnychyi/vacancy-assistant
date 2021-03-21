@@ -1,0 +1,31 @@
+.form {
+  padding: 20px;
+  padding-top: 30px;
+  position: relative;
+  z-index: 1;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.form::after {
+  position: absolute;
+  content: '';
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.link {
+  display: block;
+  margin: 15px auto 0;
+  width: fit-content;
+  color: #fff;
+}
+
+.link:hover {
+  color: #fff;
+}

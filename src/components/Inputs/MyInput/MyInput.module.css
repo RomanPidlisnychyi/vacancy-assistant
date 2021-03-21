@@ -1,0 +1,30 @@
+.formGroup {
+  margin-bottom: 30px;
+  padding-left: 50px;
+  position: relative;
+  display: flex;
+}
+
+.email {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: url('../../../images/mail.svg') center/contain no-repeat;
+}
+
+.input:focus:invalid {
+  border-color: red;
+}
+
+.password {
+  composes: email;
+  background: url('../../../images//passw.svg') center/80% no-repeat;
+}
+
+.text {
+  composes: password;
+  background-image: url('../../../images/user.svg');
+}

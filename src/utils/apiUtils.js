@@ -34,7 +34,10 @@ export const register = async credentials => {
 
     return { ...response.data, password };
   } catch (err) {
-    return err.response.data.message;
+    if (err.response && err.response.data && err.response.data.message) {
+      return err.response.data.message;
+    }
+    return 'Проверьте интернет';
   }
 };
 
@@ -47,7 +50,10 @@ export const login = async credentials => {
 
     return response.data;
   } catch (err) {
-    return err.response.data.message;
+    if (err.response && err.response.data && err.response.data.message) {
+      return err.response.data.message;
+    }
+    return 'Проверьте интернет';
   }
 };
 
@@ -74,7 +80,10 @@ export const current = async () => {
     return { user: response.data.user, tokens };
   } catch (err) {
     token.unset();
-    return err.response.data.message;
+    if (err.response && err.response.data && err.response.data.message) {
+      return err.response.data.message;
+    }
+    return 'Проверьте интернет';
   }
 };
 
@@ -84,16 +93,22 @@ export const vacancies = async () => {
 
     return response.data;
   } catch (err) {
-    console.log('err', err);
+    if (err.response && err.response.data && err.response.data.message) {
+      return err.response.data.message;
+    }
+    return 'Проверьте интернет';
   }
 };
 
-export const create = async vacancy => {
+export const createVacancy = async vacancy => {
   try {
     const response = await axios.post('/vacancy', vacancy);
 
-    console.log('response', response);
+    return response.data;
   } catch (err) {
-    console.log('err', err);
+    if (err.response && err.response.data && err.response.data.message) {
+      return err.response.data.message;
+    }
+    return 'Проверьте интернет';
   }
 };

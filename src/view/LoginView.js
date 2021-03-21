@@ -1,5 +1,5 @@
 import { LayoutView } from '../components/Layout';
-import { SingInForm } from '../components/auth';
+import { SingInForm } from '../components/Forms';
 
 export default function LoginView() {
   return (

@@ -9,12 +9,14 @@ import {
   deleteVacancySuccess,
   deleteVacancyError,
 } from '../actions/vacancyActions';
-import { create } from '../../utils/apiUtils';
+import { createVacancy } from '../../utils/apiUtils';
 
-export const onCreate = vacancy => async dispatch => {
+export const onCreateVacancy = vacancy => async dispatch => {
   dispatch(createVacancyRequest());
 
-  const payload = await create(vacancy);
+  const payload = await createVacancy(vacancy);
+
+  console.log('payload', payload);
 
   if (payload._id) {
     dispatch(createVacancySuccess(payload));

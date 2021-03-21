@@ -1,1 +1,1 @@
-export { default as BSModal } from './BSModal';
+export { default as MyModal } from './MyModal';

@@ -1,5 +1,6 @@
 .container {
   margin: 0 auto;
+  min-width: 320px;
   /* background-image: url('https://i.ibb.co/yyBMPmJ/1593079102-work-731198.jpg'); */
   background-image: url('https://i.ibb.co/J29982W/mean-stack-developer-e1579706108805.jpg');
 }
@@ -9,4 +10,5 @@
   display: flex;
   height: 100vh;
   align-items: center;
+  width: 320px;
 }

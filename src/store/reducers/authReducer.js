@@ -44,6 +44,7 @@ const err = createReducer(null, {
   [registerSuccess]: () => null,
   [loginError]: (_, { payload }) => payload,
   [loginSuccess]: () => null,
+  [currentError]: (_, { payload }) => payload,
 });
 
 export default combineReducers({

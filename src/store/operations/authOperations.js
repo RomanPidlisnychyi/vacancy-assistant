@@ -53,7 +53,6 @@ export const onLogout = () => dispatch => {
 export const onCurrent = () => async dispatch => {
   dispatch(currentReauest());
   const payload = await current();
-
   if (payload.user) {
     dispatch(currentSuccess(payload));
     const allVacancies = await vacancies();

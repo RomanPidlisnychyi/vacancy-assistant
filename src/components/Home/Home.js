@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { UserMenu } from '../UserMenu';
-import { Input } from '../Input';
-import { BSModal } from '../Modal';
+import { Header } from '../Header';
+import { MainInput } from '../Inputs';
+import { CreateVacancyForm } from '../Forms';
+import { MyModal } from '../Modal';
 import styles from './Home.module.css';
 
 export default function Home() {
@@ -9,10 +10,16 @@ export default function Home() {
 
   const handleModal = () => setIsModal(!isModal);
   return (
-    <section className={styles.container}>
-      <UserMenu />
-      <Input handleModal={handleModal} />
-      {isModal && <BSModal handleModal={handleModal} />}
-    </section>
+    <div className={styles.container}>
+      <Header />
+      <main className={styles.main}>
+        <MainInput handleModal={handleModal} />
+      </main>
+      {isModal && (
+        <MyModal title="Vacancy options" handleModal={handleModal}>
+          <CreateVacancyForm />
+        </MyModal>
+      )}
+    </div>
   );
 }
