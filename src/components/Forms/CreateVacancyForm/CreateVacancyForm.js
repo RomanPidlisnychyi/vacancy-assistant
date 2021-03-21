@@ -1,77 +1,100 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form } from 'react-bootstrap';
-import { onRegister } from '../../../store/operations/authOperations';
+import { onCreateVacancy } from '../../../store/operations/vacancyOperations';
+import { getFilter } from '../../../store/selectors/filterSelectors';
+import { setFilter } from '../../../store/actions/filterActions';
 import { MyInput } from '../../Inputs';
-import { MyButton } from '../../MyButton';
 import { validator } from '../../../utils/validator';
 import styles from './CreateVacancyForm.module.css';
 
 export default function CreateVacancyForm() {
   const dispatch = useDispatch();
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const filter = useSelector(getFilter);
 
-  const handleName = e => setName(e.target.value);
+  const handleFilter = e => dispatch(setFilter(e.target.value));
 
-  const handleEmail = e => setEmail(e.target.value);
+  const [url, setUrl] = useState('');
+  const [phone, setPhone] = useState('');
+  const [position, setPosition] = useState('');
+  const [stack, setStack] = useState('');
+  const [location, setLocation] = useState('');
 
-  const handlePassword = e => setPassword(e.target.value);
+  const handleURL = e => setUrl(e.target.value);
+  const handlePhone = e => setPhone(e.target.value);
+  const handlePosition = e => setPosition(e.target.value);
+  const handleStack = e => setStack(e.target.value);
+  const handleLocation = e => setLocation(e.target.value);
 
-  const handleConfirmPassword = e => setConfirmPassword(e.target.value);
+  const urlValid = validator('url', url);
 
-  const nameValid = name;
+  // const nameValid = name;
 
-  const emailValid = validator('email', email);
-  const passwordValid = validator('password', password);
+  // const emailValid = validator('email', email);
+  // const passwordValid = validator('password', password);
 
-  const confirmPasswordValid = password === confirmPassword && confirmPassword;
+  // const confirmPasswordValid = password === confirmPassword && confirmPassword;
 
-  const btnActive =
-    nameValid && emailValid && passwordValid && confirmPasswordValid;
+  // const btnActive =
+  //   nameValid && emailValid && passwordValid && confirmPasswordValid;
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    dispatch(onRegister({ name, email, password }));
+    // dispatch(onCreateVacancy({ name, email, password }));
   };
 
   return (
     <Form className={styles.form} onSubmit={handleSubmit}>
       <MyInput
         type="text"
-        value={name}
-        handleValue={handleName}
-        valid={nameValid}
-        placeholder="User name"
+        name="company"
+        value={filter}
+        handleValue={handleFilter}
+        valid={filter}
+        placeholder="Company name"
       />
       <MyInput
-        type="email"
-        value={email}
-        handleValue={handleEmail}
-        valid={emailValid}
-        placeholder="email@example.com"
-        message="Incorrect email!"
+        type="text"
+        name="url"
+        value={url}
+        handleValue={handleURL}
+        valid={urlValid}
+        placeholder="Vacancy URL"
+        message="http_s://example.com"
       />
       <MyInput
-        type="password"
-        value={password}
-        handleValue={handlePassword}
-        valid={passwordValid}
-        placeholder="Password"
-        message="Pass length must be > 7!"
+        type="tel"
+        name="phone"
+        value={phone}
+        handleValue={handlePhone}
+        // valid={passwordValid}
+        placeholder="Tel."
+        // message="Pass length must be > 7!"
       />
       <MyInput
-        type="password"
-        value={confirmPassword}
-        handleValue={handleConfirmPassword}
-        valid={confirmPasswordValid}
-        placeholder="Confirm password"
-        message="Passwords do not match!"
+        type="text"
+        value={position}
+        handleValue={handlePosition}
+        // valid={confirmPasswordValid}
+        placeholder="Vacancy position"
+      />
+      <MyInput
+        type="text"
+        name="stack"
+        value={stack}
+        handleValue={handleStack}
+        // valid={confirmPasswordValid}
+        placeholder="Vacancy stack"
+      />
+      <MyInput
+        type="text"
+        name="location"
+        value={location}
+        handleValue={handleLocation}
+        // valid={confirmPasswordValid}
+        placeholder="Job location"
       />
     </Form>
   );

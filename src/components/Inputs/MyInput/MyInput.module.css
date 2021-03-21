@@ -24,7 +24,12 @@
   background: url('../../../images//passw.svg') center/80% no-repeat;
 }
 
-.text {
+.user {
   composes: password;
   background-image: url('../../../images/user.svg');
+}
+
+.company {
+  composes: password;
+  background-image: url('../../../images/office.svg');
 }

@@ -50,6 +50,7 @@ export default function SingUpForm(props) {
     <Form className={styles.form} onSubmit={handleSubmit}>
       <MyInput
         type="text"
+        name="user"
         value={name}
         handleValue={handleName}
         valid={nameValid}

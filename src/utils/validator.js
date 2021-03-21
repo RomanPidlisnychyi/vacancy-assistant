@@ -6,6 +6,11 @@ export const validator = (type, value) => {
     case 'password':
       return value !== '' && value.length > 7;
 
+    case 'url':
+      return (
+        value.includes('http') && value.includes('//') && value.includes('.')
+      );
+
     default:
       return false;
   }
