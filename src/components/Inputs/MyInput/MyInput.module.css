@@ -24,6 +24,10 @@
   background: url('../../../images//passw.svg') center/80% no-repeat;
 }
 
+.confirmPassword {
+  composes: password;
+}
+
 .user {
   composes: password;
   background-image: url('../../../images/user.svg');

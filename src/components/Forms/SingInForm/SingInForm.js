@@ -7,7 +7,7 @@ import { getEmail, getPass } from '../../../store/selectors/authSelectors';
 import { MyInput } from '../../Inputs';
 import { MyButton } from '../../MyButton';
 import { inputs } from '../../../inputs';
-import { onInputs, inputsOnValid } from '../../../utils/onInputs';
+import { inputsOnValidation } from '../../../utils/validator';
 import styles from '../SingUpForm/SingUpForm.module.css';
 
 export default function SingInForm() {
@@ -35,13 +35,7 @@ export default function SingInForm() {
   }, [email, password]);
 
   const handleBtnActive = () => {
-    const allInputs = document.querySelectorAll('input');
-
-    allInputs.forEach(input => {
-      onInputs(input.name, input.classList['value'].includes('is-valid'));
-    });
-
-    setBtnActive(inputsOnValid.email && inputsOnValid.password);
+    setBtnActive(inputsOnValidation.email && inputsOnValidation.password);
   };
 
   const handleSubmit = e => {
