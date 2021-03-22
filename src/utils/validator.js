@@ -31,7 +31,14 @@ export const validator = (name, value) => {
 
       return isValid;
 
-    case 'url':
+    case 'companyName':
+      isValid = value;
+
+      inputsOnValidation = { ...inputsOnValidation, [name]: isValid };
+
+      return isValid;
+
+    case 'URL':
       isValid =
         value.includes('http') && value.includes('//') && value.includes('.');
 

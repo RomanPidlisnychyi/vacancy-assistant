@@ -26,8 +26,8 @@
 
 .confirmPassword,
 .name,
-.company,
-.url,
+.companyName,
+.URL,
 .phone,
 .position,
 .stack,
@@ -39,11 +39,11 @@
   background-image: url('../../../images/user.svg');
 }
 
-.company {
+.companyName {
   background-image: url('../../../images/office.svg');
 }
 
-.url {
+.URL {
   background-image: url('../../../images/link.svg');
 }
 

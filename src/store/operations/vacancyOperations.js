@@ -16,8 +16,6 @@ export const onCreateVacancy = vacancy => async dispatch => {
 
   const payload = await createVacancy(vacancy);
 
-  console.log('payload', payload);
-
   if (payload._id) {
     dispatch(createVacancySuccess(payload));
     return payload;

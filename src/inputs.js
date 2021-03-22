@@ -25,16 +25,16 @@ export const inputs = [
     validation: true,
   },
   {
-    name: 'company',
+    name: 'companyName',
     type: 'text',
     validation: true,
   },
   {
-    name: 'url',
+    name: 'URL',
     type: 'text',
     placeholder: 'vacancy URL',
     message: 'http_s://example.com',
-    validation: true,
+    validation: false,
   },
   {
     name: 'phone',

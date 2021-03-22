@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://vacancy-assistant.herokuapp.com';
+// axios.defaults.baseURL = 'http://localhost:3001';
 
 const token = {
   setTokens(tokens) {
@@ -104,7 +105,16 @@ export const createVacancy = async vacancy => {
   try {
     const response = await axios.post('/vacancy', vacancy);
 
-    return response.data;
+    const { access } = response.data;
+
+    if (access) {
+      console.log(token.getLocalTokens());
+      const { refresh } = token.getLocalTokens();
+      token.setTokens({ access, refresh });
+      console.log(token.getLocalTokens());
+    }
+
+    return response.data.vacancy;
   } catch (err) {
     if (err.response && err.response.data && err.response.data.message) {
       return err.response.data.message;

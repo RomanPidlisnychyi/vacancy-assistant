@@ -6,6 +6,8 @@ import {
   deleteVacancySuccess,
 } from '../actions/vacancyActions';
 
+const createVacancy = (state, { payload }) => [...state, payload];
+
 const updateVacancy = (state, { payload }) =>
   state.map(vacancy => {
     if (vacancy._id !== payload._id) {
@@ -20,7 +22,7 @@ const deleteVacancy = (state, { payload }) =>
 
 export const vacancies = createReducer([], {
   [getAllVacancies]: (_, { payload }) => payload,
-  [createVacancySuccess]: (state, { payload }) => ({ ...state, payload }),
+  [createVacancySuccess]: createVacancy,
   [updateVacancySuccess]: updateVacancy,
   [deleteVacancySuccess]: deleteVacancy,
 });

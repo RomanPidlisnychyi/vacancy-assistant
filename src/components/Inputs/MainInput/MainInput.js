@@ -18,6 +18,7 @@ export default function MainInput({ handleModal }) {
     <InputGroup className="mb-3">
       <Form.Control
         value={filter}
+        name="main"
         onChange={handleInput}
         className={styles.input}
         placeholder="Company name"

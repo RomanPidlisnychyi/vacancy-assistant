@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { onLogin } from '../../../store/operations/authOperations';
 import { MyInput } from '../../Inputs';
 import { MyButton } from '../../MyButton';
+import { onLogin } from '../../../store/operations/authOperations';
 import { inputsOnValidation } from '../../../utils/validator';
 import { inputs } from '../../../inputs';
 import styles from '../SingUpForm/SingUpForm.module.css';
