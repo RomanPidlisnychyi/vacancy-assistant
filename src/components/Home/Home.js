@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Header } from '../Header';
 import { MainInput } from '../Inputs';
+import { VacansiesList } from '../Lists';
 import { CreateVacancyForm } from '../Forms';
 import { MyModal } from '../Modal';
 import { onCreateVacancy } from '../../store/operations/vacancyOperations';
@@ -46,6 +47,7 @@ export default function Home() {
       <Header />
       <main className={styles.main}>
         <MainInput handleModal={handleModal} />
+        <VacansiesList />
       </main>
       {isModal && (
         <MyModal

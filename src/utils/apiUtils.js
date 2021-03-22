@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'https://vacancy-assistant.herokuapp.com';
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://vacancy-assistant.herokuapp.com';
+// axios.defaults.baseURL = 'http://localhost:3001';
 
 const token = {
   setTokens(tokens) {
@@ -135,6 +135,28 @@ export const createVacancy = async vacancy => {
     }
 
     return response.data.vacancy;
+  } catch (err) {
+    if (err.response && err.response.data && err.response.data.message) {
+      return err.response.data.message;
+    }
+    return 'Проверьте интернет';
+  }
+};
+
+export const deleteVacancy = async vacancyId => {
+  try {
+    const response = await axios.delete(`/vacancy/${vacancyId}`);
+
+    const {
+      data: { access },
+      status,
+    } = response;
+
+    if (access) {
+      token.setAccessToken(access);
+    }
+
+    return status;
   } catch (err) {
     if (err.response && err.response.data && err.response.data.message) {
       return err.response.data.message;

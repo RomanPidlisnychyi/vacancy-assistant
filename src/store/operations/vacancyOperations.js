@@ -9,7 +9,7 @@ import {
   deleteVacancySuccess,
   deleteVacancyError,
 } from '../actions/vacancyActions';
-import { createVacancy } from '../../utils/apiUtils';
+import { createVacancy, deleteVacancy } from '../../utils/apiUtils';
 
 export const onCreateVacancy = vacancy => async dispatch => {
   dispatch(createVacancyRequest());
@@ -22,4 +22,16 @@ export const onCreateVacancy = vacancy => async dispatch => {
   }
 
   dispatch(createVacancyError());
+};
+
+export const onDeleteVacancy = vacancyId => async dispatch => {
+  dispatch(deleteVacancyRequest());
+
+  const status = await deleteVacancy(vacancyId);
+
+  if (status < 400) {
+    dispatch(deleteVacancySuccess(vacancyId));
+    return status;
+  }
+  dispatch(deleteVacancyError());
 };
