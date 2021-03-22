@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form } from 'react-bootstrap';
+import { getEmail, getPass } from '../../../store/selectors/authSelectors';
 import { IncorrectInputValue } from '../../Messages';
 import { validator } from '../../../utils/validator';
 import styles from './MyInput.module.css';
@@ -7,16 +9,25 @@ import styles from './MyInput.module.css';
 export default function MyInput({
   type,
   name,
-  value,
   validation,
   placeholder,
   message,
 }) {
+  const dispatch = useDispatch();
+
+  const email = useSelector(getEmail);
+  const password = useSelector(getPass);
+
   const [input, setInput] = useState('');
 
-  if (value) {
-    setInput(value);
-  }
+  useEffect(() => {
+    if (name === 'email' && email) {
+      setInput(email);
+    }
+    if (name === 'password' && password) {
+      setInput(password);
+    }
+  }, [dispatch, email, password, name]);
 
   const handleInput = e => setInput(e.target.value);
 
@@ -26,9 +37,7 @@ export default function MyInput({
     isValid = validator(name, input);
     notValid = !isValid;
   }
-
-  //type: text, email, password
-  //name: company, user, location, phone, url, position, stack
+  //name: email, password, confirmPassword, user, company, location, phone, url, position, stack
   return (
     <Form.Group className={styles.formGroup}>
       <Form.Label className={styles[name]} />
@@ -38,11 +47,11 @@ export default function MyInput({
         isValid={isValid}
         isInvalid={notValid}
         type={type}
-        placeholder={placeholder}
+        placeholder={placeholder ? placeholder : name}
         onChange={handleInput}
         value={input}
       />
-      {notValid && value && message && <IncorrectInputValue title={message} />}
+      {notValid && input && message && <IncorrectInputValue title={message} />}
     </Form.Group>
   );
 }

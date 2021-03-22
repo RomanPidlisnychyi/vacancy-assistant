@@ -1,8 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { onLogin } from '../../../store/operations/authOperations';
-import { getEmail, getPass } from '../../../store/selectors/authSelectors';
 import { MyInput } from '../../Inputs';
 import { MyButton } from '../../MyButton';
 import { inputsOnValidation } from '../../../utils/validator';
@@ -12,26 +11,16 @@ import styles from '../SingUpForm/SingUpForm.module.css';
 export default function SingInForm() {
   const dispatch = useDispatch();
 
-  const email = useSelector(getEmail);
-  const password = useSelector(getPass);
-
-  const myInputs = inputs
-    .filter(input => input.name === 'email' || input.name === 'password')
-    .map(input => {
-      if (email && input[email]) {
-        return { ...input, value: email };
-      }
-
-      if (password && input[password]) {
-        return { ...input, value: password };
-      }
-      return input;
-    });
+  const myInputs = inputs.filter(
+    input => input.name === 'email' || input.name === 'password'
+  );
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (!inputsOnValidation.email || !inputsOnValidation.password) {
+    const { email, password } = inputsOnValidation;
+
+    if (!email || !password) {
       return;
     }
 

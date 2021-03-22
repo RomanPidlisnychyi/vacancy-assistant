@@ -3,6 +3,13 @@ export let inputsOnValidation = {};
 export const validator = (name, value) => {
   let isValid;
   switch (name) {
+    case 'name':
+      isValid = value;
+
+      inputsOnValidation = { ...inputsOnValidation, [name]: isValid };
+
+      return isValid;
+
     case 'email':
       isValid = value.includes('@') && value.includes('.');
 
@@ -11,14 +18,14 @@ export const validator = (name, value) => {
       return isValid;
 
     case 'password':
-      isValid = value.length > 7;
+      isValid = value.length > 7 ? value : false;
 
       inputsOnValidation = { ...inputsOnValidation, [name]: isValid };
 
       return isValid;
 
     case 'confirmPassword':
-      isValid = value;
+      isValid = value && value === inputsOnValidation.password;
 
       inputsOnValidation = { ...inputsOnValidation, [name]: isValid };
 
