@@ -17,6 +17,13 @@ export const validator = (name, value) => {
 
       return isValid;
 
+    case 'confirmPassword':
+      isValid = value;
+
+      inputsOnValidation = { ...inputsOnValidation, [name]: isValid };
+
+      return isValid;
+
     case 'url':
       isValid =
         value.includes('http') && value.includes('//') && value.includes('.');

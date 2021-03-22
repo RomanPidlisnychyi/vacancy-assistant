@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { IncorrectInputValue } from '../../Messages';
 import { validator } from '../../../utils/validator';
@@ -7,15 +8,22 @@ export default function MyInput({
   type,
   name,
   value,
-  setValue,
   validation,
   placeholder,
   message,
 }) {
+  const [input, setInput] = useState('');
+
+  if (value) {
+    setInput(value);
+  }
+
+  const handleInput = e => setInput(e.target.value);
+
   let isValid, notValid;
 
   if (validation) {
-    isValid = validator(name, value);
+    isValid = validator(name, input);
     notValid = !isValid;
   }
 
@@ -31,8 +39,8 @@ export default function MyInput({
         isInvalid={notValid}
         type={type}
         placeholder={placeholder}
-        onChange={setValue}
-        value={value}
+        onChange={handleInput}
+        value={input}
       />
       {notValid && value && message && <IncorrectInputValue title={message} />}
     </Form.Group>
