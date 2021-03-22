@@ -1,34 +1,37 @@
-import { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { IncorrectInputValue } from '../../Messages';
+import { validator } from '../../../utils/validator';
 import styles from './MyInput.module.css';
 
 export default function MyInput({
   type,
   name,
   value,
-  handleValue,
-  valid,
+  setValue,
+  validation,
   placeholder,
   message,
 }) {
   let isValid, notValid;
-  if (valid !== undefined) {
-    isValid = valid;
-    notValid = !valid;
+
+  if (validation) {
+    isValid = validator(name, value);
+    notValid = !isValid;
   }
+
   //type: text, email, password
   //name: company, user, location, phone, url, position, stack
   return (
     <Form.Group className={styles.formGroup}>
-      <Form.Label className={styles[name ? name : type]} />
+      <Form.Label className={styles[name]} />
       <Form.Control
         className={styles.input}
+        name={name}
         isValid={isValid}
         isInvalid={notValid}
         type={type}
         placeholder={placeholder}
-        onChange={handleValue}
+        onChange={setValue}
         value={value}
       />
       {notValid && value && message && <IncorrectInputValue title={message} />}

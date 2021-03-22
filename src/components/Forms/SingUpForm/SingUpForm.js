@@ -58,6 +58,7 @@ export default function SingUpForm(props) {
       />
       <MyInput
         type="email"
+        name="email"
         value={email}
         handleValue={handleEmail}
         valid={emailValid}
@@ -66,6 +67,7 @@ export default function SingUpForm(props) {
       />
       <MyInput
         type="password"
+        name="password"
         value={password}
         handleValue={handlePassword}
         valid={passwordValid}
@@ -74,6 +76,7 @@ export default function SingUpForm(props) {
       />
       <MyInput
         type="password"
+        name="password"
         value={confirmPassword}
         handleValue={handleConfirmPassword}
         valid={confirmPasswordValid}
