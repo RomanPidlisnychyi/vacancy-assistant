@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://vacancy-assistant.herokuapp.com';
-// axios.defaults.baseURL = 'http://localhost:3001';
+// axios.defaults.baseURL = 'https://vacancy-assistant.herokuapp.com';
+axios.defaults.baseURL = 'http://localhost:3001';
 
 const token = {
   setTokens(tokens) {
@@ -14,6 +14,10 @@ const token = {
     };
 
     localStorage.setItem('vacancyTokens', JSON.stringify(tokens));
+  },
+  setAccessToken(access) {
+    const { refresh } = token.getLocalTokens();
+    token.setTokens({ access, refresh });
   },
   getLocalTokens() {
     const { access, refresh } = JSON.parse(
@@ -88,6 +92,25 @@ export const current = async () => {
   }
 };
 
+export const refresh = async () => {
+  try {
+    const response = await axios.get('/auth/refresh');
+    const { access } = response.data;
+
+    if (access) {
+      token.setAccessToken(access);
+    }
+
+    return access;
+  } catch (err) {
+    token.unset();
+    if (err.response && err.response.data && err.response.data.message) {
+      return err.response.data.message;
+    }
+    return 'Проверьте интернет';
+  }
+};
+
 export const vacancies = async () => {
   try {
     const response = await axios.get('/vacancy');
@@ -108,10 +131,7 @@ export const createVacancy = async vacancy => {
     const { access } = response.data;
 
     if (access) {
-      console.log(token.getLocalTokens());
-      const { refresh } = token.getLocalTokens();
-      token.setTokens({ access, refresh });
-      console.log(token.getLocalTokens());
+      token.setAccessToken(access);
     }
 
     return response.data.vacancy;

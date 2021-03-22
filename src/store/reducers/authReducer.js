@@ -8,6 +8,8 @@ import {
   registerError,
   loginError,
   currentError,
+  refreshError,
+  refreshSuccess,
 } from '../actions/authActions';
 
 const isLocalTokens = localStorage.getItem('vacancyTokens');
@@ -26,7 +28,9 @@ const user = createReducer(initialUserState, {
   [registerSuccess]: (_, { payload }) => payload,
   [loginSuccess]: (_, { payload }) => payload.user,
   [currentSuccess]: (_, { payload }) => payload.user,
+  [currentError]: () => initialUserState,
   [logoutSuccess]: () => initialUserState,
+  [refreshError]: () => initialUserState,
 });
 
 const tokens = createReducer(
@@ -34,8 +38,11 @@ const tokens = createReducer(
   {
     [loginSuccess]: (_, { payload }) => payload.tokens,
     [currentSuccess]: (_, { payload }) => payload.tokens,
+    [refreshSuccess]: (state, { payload }) =>
+      payload ? { ...state, access: payload } : state,
     [currentError]: () => initialTokensState,
     [logoutSuccess]: () => initialTokensState,
+    [refreshError]: () => initialTokensState,
   }
 );
 

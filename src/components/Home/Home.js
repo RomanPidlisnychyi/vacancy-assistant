@@ -5,8 +5,8 @@ import { MainInput } from '../Inputs';
 import { CreateVacancyForm } from '../Forms';
 import { MyModal } from '../Modal';
 import { onCreateVacancy } from '../../store/operations/vacancyOperations';
+import { setFilter } from '../../store/actions/filterActions';
 import { inputsOnValidation } from '../../utils/validator';
-import { inputs } from '../../inputs';
 import styles from './Home.module.css';
 
 export default function Home() {
@@ -36,9 +36,10 @@ export default function Home() {
 
     delete credantials.main;
 
-    console.log('credantials', credantials);
-
-    dispatch(onCreateVacancy(credantials));
+    dispatch(onCreateVacancy(credantials)).then(() => {
+      dispatch(setFilter(''));
+      handleModal();
+    });
   };
   return (
     <div className={styles.container}>

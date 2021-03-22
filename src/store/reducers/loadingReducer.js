@@ -1,26 +1,40 @@
 import { createReducer } from '@reduxjs/toolkit';
 import {
-  registerReauest,
+  registerRequest,
   registerSuccess,
   registerError,
-  loginReauest,
+  loginRequest,
   loginSuccess,
   loginError,
-  currentReauest,
+  currentRequest,
   currentSuccess,
   currentError,
+  refreshRequest,
+  refreshSuccess,
+  refreshError,
 } from '../actions/authActions';
+import {
+  createVacancyRequest,
+  createVacancySuccess,
+  createVacancyError,
+} from '../actions/vacancyActions';
 
 const loading = createReducer(false, {
-  [registerReauest]: () => true,
+  [registerRequest]: () => true,
   [registerSuccess]: () => false,
   [registerError]: () => false,
-  [loginReauest]: () => true,
+  [loginRequest]: () => true,
   [loginSuccess]: () => false,
   [loginError]: () => false,
-  [currentReauest]: () => true,
+  [currentRequest]: () => true,
   [currentSuccess]: () => false,
   [currentError]: () => false,
+  [refreshRequest]: () => true,
+  [refreshSuccess]: () => false,
+  [refreshError]: () => false,
+  [createVacancyRequest]: () => true,
+  [createVacancySuccess]: () => false,
+  [createVacancyError]: () => false,
 });
 
 export default loading;

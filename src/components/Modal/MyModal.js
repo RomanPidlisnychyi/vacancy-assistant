@@ -1,4 +1,7 @@
 import { Modal, Button } from 'react-bootstrap';
+import Loader from 'react-loader-spinner';
+import { useSelector } from 'react-redux';
+import { isLoading } from '../../store/selectors/loadingSelectots';
 
 export default function MyModal({
   handleSubmit,
@@ -6,6 +9,7 @@ export default function MyModal({
   title,
   children,
 }) {
+  const loading = useSelector(isLoading);
   return (
     <>
       <Modal show={true} onHide={handleModal}>
@@ -18,7 +22,7 @@ export default function MyModal({
             Close
           </Button>
           <Button variant="primary" onClick={handleSubmit}>
-            Save
+            {!loading ? 'Save' : <Loader color="#fff" height={24} width={45} />}
           </Button>
         </Modal.Footer>
       </Modal>

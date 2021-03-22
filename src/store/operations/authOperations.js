@@ -1,14 +1,17 @@
 import {
-  registerReauest,
+  registerRequest,
   registerSuccess,
   registerError,
-  loginReauest,
+  loginRequest,
   loginSuccess,
   loginError,
   logoutSuccess,
-  currentReauest,
+  currentRequest,
   currentSuccess,
   currentError,
+  refreshRequest,
+  refreshSuccess,
+  refreshError,
 } from '../actions/authActions';
 import { getAllVacancies } from '../actions/vacancyActions';
 import {
@@ -16,11 +19,12 @@ import {
   login,
   logout,
   current,
+  refresh,
   vacancies,
 } from '../../utils/apiUtils';
 
 export const onRegister = credentials => async dispatch => {
-  dispatch(registerReauest());
+  dispatch(registerRequest());
 
   const payload = await register(credentials);
 
@@ -33,7 +37,7 @@ export const onRegister = credentials => async dispatch => {
 };
 
 export const onLogin = credentials => async dispatch => {
-  dispatch(loginReauest());
+  dispatch(loginRequest());
   const payload = await login(credentials);
   if (payload.user) {
     dispatch(loginSuccess(payload));
@@ -51,7 +55,7 @@ export const onLogout = () => dispatch => {
 };
 
 export const onCurrent = () => async dispatch => {
-  dispatch(currentReauest());
+  dispatch(currentRequest());
   const payload = await current();
   if (payload.user) {
     dispatch(currentSuccess(payload));
@@ -61,4 +65,16 @@ export const onCurrent = () => async dispatch => {
   }
 
   dispatch(currentError(payload));
+};
+
+export const onRefresh = () => async dispatch => {
+  dispatch(refreshRequest());
+  const payload = await refresh();
+
+  if (payload || payload === undefined) {
+    dispatch(refreshSuccess(payload));
+    return;
+  }
+
+  dispatch(refreshError(payload));
 };
