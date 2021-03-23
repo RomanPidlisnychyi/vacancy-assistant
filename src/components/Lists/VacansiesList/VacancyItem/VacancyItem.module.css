@@ -4,9 +4,9 @@
   padding: 0;
 }
 
-.cardBody {
+/* .cardBody {
   position: relative;
-}
+} */
 
 .mainButton {
   display: flex;
@@ -14,7 +14,7 @@
 }
 
 .interested {
-  background: url('../../../../images/info.svg') right 20px center / 8%
+  background: url('../../../../images/info.svg') right 40px center / 8%
     no-repeat;
 }
 

@@ -20,7 +20,6 @@ export default function BtnControl() {
       {myBtn.map(btn => (
         <IconBtn key={btn.name} handleBtn={handleBtn} name={btn.name} />
       ))}
-      <IconBtn handleBtn={handleBtn} name={'delete'} />
     </div>
   );
 }

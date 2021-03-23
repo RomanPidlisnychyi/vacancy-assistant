@@ -1,16 +1,15 @@
 .container {
   margin: 0 auto;
   min-width: 320px;
-  /* background: url('https://i.ibb.co/yyBMPmJ/1593079102-work-731198.jpg') center /
-    cover no-repeat; */
   background: url('https://i.ibb.co/J29982W/mean-stack-developer-e1579706108805.jpg')
     center / cover no-repeat;
 }
 
 .viewContainer {
-  margin: 0 auto;
   display: flex;
-  height: 100vh;
-  align-items: center;
   width: 320px;
+  height: 100vh;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-top: 30px;
 }

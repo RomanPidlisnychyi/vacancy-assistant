@@ -1,8 +1,14 @@
 .password {
   padding: 15px;
-  border: 1px solid grey;
+  border: 1px solid #dbe1e6;
   border-radius: 50%;
   background: url('../../../../../../images/passw.svg') center/60% no-repeat;
+}
+
+.password:hover {
+  border-color: #808080;
+  background: url('../../../../../../images/passwOnHover.svg') center/60%
+    no-repeat;
 }
 
 .confirmPassword,
@@ -25,8 +31,16 @@
   background-image: url('../../../../../../images/office.svg');
 }
 
+.companyName:hover {
+  background-image: url('../../../../../../images/officeOnHover.svg');
+}
+
 .URL {
   background-image: url('../../../../../../images/link.svg');
+}
+
+.URL:hover {
+  background-image: url('../../../../../../images/linkOnHover.svg');
 }
 
 .phone {
@@ -46,5 +60,7 @@
 }
 
 .delete {
-  background-image: url('../../../../../../images/cross.svg');
+  border: none;
+  background: url('../../../../../../images/cancel-circle.svg') center / 60%
+    no-repeat;
 }

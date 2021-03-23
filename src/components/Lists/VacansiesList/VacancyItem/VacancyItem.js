@@ -1,6 +1,7 @@
 import { ListGroup, Button, Card, Accordion } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { BtnControl } from './BtnControl';
+import { IconBtn } from './BtnControl/IconBtn';
 import { getVacancy } from '../../../../store/selectors/vacancySelectors';
 import { onDeleteVacancy } from '../../../../store/operations/vacancyOperations';
 import styles from './VacancyItem.module.css';
@@ -27,14 +28,12 @@ export default function VacancyItem({ id }) {
             >
               {date}
               {companyName}
+              <IconBtn name={'delete'} handleBtn={handleBtn} />
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="0">
             <Card.Body className={styles.cardBody}>
               <BtnControl />
-              {/* <Button onClick={handleBtn} variant="outline-danger" size="sm">
-                &#10006;
-              </Button> */}
             </Card.Body>
           </Accordion.Collapse>
         </Card>
