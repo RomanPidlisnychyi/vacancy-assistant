@@ -101,7 +101,7 @@ export const refresh = async () => {
       token.setAccessToken(access);
     }
 
-    return access;
+    return response;
   } catch (err) {
     token.unset();
     if (err.response && err.response.data && err.response.data.message) {
@@ -120,7 +120,7 @@ export const vacancies = async () => {
     if (err.response && err.response.data && err.response.data.message) {
       return err.response.data.message;
     }
-    return 'Проверьте интернет';
+    return err;
   }
 };
 

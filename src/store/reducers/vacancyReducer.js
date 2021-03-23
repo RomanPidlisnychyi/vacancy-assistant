@@ -5,6 +5,7 @@ import {
   updateVacancySuccess,
   deleteVacancySuccess,
 } from '../actions/vacancyActions';
+import { refreshError, currentError } from '../actions/authActions';
 
 const createVacancy = (state, { payload }) => [...state, payload];
 
@@ -25,4 +26,6 @@ export const vacancies = createReducer([], {
   [createVacancySuccess]: createVacancy,
   [updateVacancySuccess]: updateVacancy,
   [deleteVacancySuccess]: deleteVacancy,
+  [currentError]: () => [],
+  [refreshError]: () => [],
 });

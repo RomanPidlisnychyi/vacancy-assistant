@@ -1,0 +1,26 @@
+.item,
+.cardHeader,
+.cardBody {
+  padding: 0;
+}
+
+.cardBody {
+  position: relative;
+}
+
+.mainButton {
+  display: flex;
+  width: 100%;
+}
+
+.sent {
+  background-color: rgba(255, 255, 0, 0.2);
+}
+
+.accepted {
+  background-color: rgba(0, 128, 0, 0.2);
+}
+
+.rejected {
+  background-color: rgba(255, 0, 0, 0.2);
+}

@@ -73,8 +73,8 @@ export const onRefresh = () => async dispatch => {
   dispatch(refreshRequest());
   const payload = await refresh();
 
-  if (payload || payload === undefined) {
-    dispatch(refreshSuccess(payload));
+  if (payload && payload.status && payload.status < 400) {
+    dispatch(refreshSuccess(payload.data.access));
     return;
   }
 
