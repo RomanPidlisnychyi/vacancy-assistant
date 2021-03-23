@@ -13,7 +13,7 @@ import {
   refreshSuccess,
   refreshError,
 } from '../actions/authActions';
-import { getAllVacancies } from '../actions/vacancyActions';
+import { getAllVacancies, getStatuses } from '../actions/vacancyActions';
 import {
   register,
   login,
@@ -41,8 +41,9 @@ export const onLogin = credentials => async dispatch => {
   const payload = await login(credentials);
   if (payload.user) {
     dispatch(loginSuccess(payload));
-    const allVacancies = await vacancies();
-    dispatch(getAllVacancies(allVacancies));
+    const { vacancies: userVacancies, statuses } = await vacancies();
+    dispatch(getAllVacancies(userVacancies));
+    dispatch(getStatuses(statuses));
     return;
   }
 
@@ -59,8 +60,9 @@ export const onCurrent = () => async dispatch => {
   const payload = await current();
   if (payload.user) {
     dispatch(currentSuccess(payload));
-    const allVacancies = await vacancies();
-    dispatch(getAllVacancies(allVacancies));
+    const { vacancies: userVacancies, statuses } = await vacancies();
+    dispatch(getAllVacancies(userVacancies));
+    dispatch(getStatuses(statuses));
     return;
   }
 

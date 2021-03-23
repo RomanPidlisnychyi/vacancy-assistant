@@ -1,6 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 
 export const getAllVacancies = createAction('GET_ALL_VACANCIES');
+export const getStatuses = createAction('GET_STATUSES');
 
 export const createVacancyRequest = createAction('CREATE_VACANCY_REQUEST');
 export const createVacancySuccess = createAction('CREATE_VACANCY_SUCCESS');

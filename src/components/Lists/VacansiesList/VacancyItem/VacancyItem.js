@@ -7,17 +7,21 @@ import styles from './VacancyItem.module.css';
 export default function VacancyItem({ id }) {
   const dispatch = useDispatch();
   const vacancy = useSelector(state => getVacancy(state, id));
+
+  const { date, companyName, URL } = vacancy;
+
   const handleBtn = () => {
     dispatch(onDeleteVacancy(id));
   };
-  return vacancy ? (
+  return (
     <ListGroup.Item>
-      {vacancy.companyName}
+      {date}
+      <a href={URL} target="_blank">
+        {companyName}
+      </a>
       <Button onClick={handleBtn} variant="outline-danger" size="sm">
         &#10006;
       </Button>
     </ListGroup.Item>
-  ) : (
-    <ListGroup.Item>Create your first vacancy</ListGroup.Item>
   );
 }
