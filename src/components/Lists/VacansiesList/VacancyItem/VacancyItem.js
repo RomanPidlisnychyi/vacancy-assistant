@@ -1,5 +1,6 @@
 import { ListGroup, Button, Card, Accordion } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
+import { BtnControl } from './BtnControl';
 import { getVacancy } from '../../../../store/selectors/vacancySelectors';
 import { onDeleteVacancy } from '../../../../store/operations/vacancyOperations';
 import styles from './VacancyItem.module.css';
@@ -30,12 +31,10 @@ export default function VacancyItem({ id }) {
           </Card.Header>
           <Accordion.Collapse eventKey="0">
             <Card.Body className={styles.cardBody}>
-              <a href={URL} target="_blank">
-                vacancy URL
-              </a>
-              <Button onClick={handleBtn} variant="outline-danger" size="sm">
+              <BtnControl />
+              {/* <Button onClick={handleBtn} variant="outline-danger" size="sm">
                 &#10006;
-              </Button>
+              </Button> */}
             </Card.Body>
           </Accordion.Collapse>
         </Card>
