@@ -13,14 +13,25 @@
   width: 100%;
 }
 
+.interested {
+  background: url('../../../../images/info.svg') right 20px center / 8%
+    no-repeat;
+}
+
 .sent {
-  background-color: rgba(255, 255, 0, 0.2);
+  composes: interested;
+  background-image: url('../../../../images/mail.svg');
+  background-color: rgba(255, 255, 0, 0.15);
 }
 
 .accepted {
-  background-color: rgba(0, 128, 0, 0.2);
+  composes: interested;
+  background-image: url('../../../../images/checkmark.svg');
+  background-color: rgba(0, 128, 0, 0.15);
 }
 
 .rejected {
-  background-color: rgba(255, 0, 0, 0.2);
+  composes: interested;
+  background-image: url('../../../../images/cross.svg');
+  background-color: rgba(255, 0, 0, 0.15);
 }

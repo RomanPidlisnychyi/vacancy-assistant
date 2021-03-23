@@ -29,7 +29,7 @@ export default function VacancyItem({ id }) {
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="0">
-            <Card.Body className={`${styles.cardBody} ${styles[status]}`}>
+            <Card.Body className={styles.cardBody}>
               <a href={URL} target="_blank">
                 vacancy URL
               </a>
