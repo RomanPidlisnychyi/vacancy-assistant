@@ -4,34 +4,23 @@
   padding: 0;
 }
 
-/* .cardBody {
-  position: relative;
-} */
+.cardHeader {
+  display: flex;
+}
 
 .mainButton {
   display: flex;
-  width: 100%;
-}
-
-.interested {
-  background: url('../../../../images/info.svg') right 40px center / 8%
-    no-repeat;
+  width: 180px;
 }
 
 .sent {
-  composes: interested;
-  background-image: url('../../../../images/mail.svg');
   background-color: rgba(255, 255, 0, 0.15);
 }
 
 .accepted {
-  composes: interested;
-  background-image: url('../../../../images/checkmark.svg');
   background-color: rgba(0, 128, 0, 0.15);
 }
 
 .rejected {
-  composes: interested;
-  background-image: url('../../../../images/cross.svg');
   background-color: rgba(255, 0, 0, 0.15);
 }

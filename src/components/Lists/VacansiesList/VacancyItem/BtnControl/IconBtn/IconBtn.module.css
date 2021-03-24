@@ -19,7 +19,11 @@
 .position,
 .stack,
 .location,
-.delete {
+.delete,
+.interested,
+.sent,
+.accepted,
+.rejected {
   composes: password;
 }
 
@@ -47,20 +51,79 @@
   background-image: url('../../../../../../images/phone.svg');
 }
 
+.phone:hover {
+  background-image: url('../../../../../../images/phoneOnHover.svg');
+}
+
 .position {
   background-image: url('../../../../../../images/user-tie.svg');
+}
+
+.position:hover {
+  background-image: url('../../../../../../images/user-tieOnHover.svg');
 }
 
 .stack {
   background-image: url('../../../../../../images/embed2.svg');
 }
 
+.stack:hover {
+  background-image: url('../../../../../../images/embed2OnHover.svg');
+}
+
 .location {
   background-image: url('../../../../../../images/compass.svg');
 }
 
-.delete {
+.location:hover {
+  background-image: url('../../../../../../images/compassOnHover.svg');
+}
+
+.delete,
+.interested,
+.sent,
+.accepted,
+.rejected {
   border: none;
+}
+
+.delete {
   background: url('../../../../../../images/cancel-circle.svg') center / 60%
     no-repeat;
+}
+
+.delete:hover {
+  background-image: url('../../../../../../images/cancel-circleOnHover.svg');
+}
+
+.interested {
+  background-image: url('../../../../../../images/info.svg');
+}
+
+.interested:hover {
+  background-image: url('../../../../../../images/infoOnHover.svg');
+}
+
+.sent {
+  background-image: url('../../../../../../images/mail.svg');
+}
+
+.sent:hover {
+  background-image: url('../../../../../../images/mailOnHover.svg');
+}
+
+.accepted {
+  background-image: url('../../../../../../images/checkmark.svg');
+}
+
+.accepted:hover {
+  background-image: url('../../../../../../images/checkmarkOnHover.svg');
+}
+
+.rejected {
+  background-image: url('../../../../../../images/cross.svg');
+}
+
+.rejected:hover {
+  background-image: url('../../../../../../images/crossOnHover.svg');
 }
