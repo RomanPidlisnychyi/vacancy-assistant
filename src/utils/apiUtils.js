@@ -164,3 +164,17 @@ export const deleteVacancy = async vacancyId => {
     return 'Проверьте интернет';
   }
 };
+
+export const getCompaniesNames = async (query = 'Viseven') => {
+  try {
+    const response = await fetch(
+      `https://jobs.dou.ua/companies/?name=${query}`
+    );
+
+    const data = await response.json();
+
+    console.log('data', data);
+  } catch (err) {
+    console.log('err', err);
+  }
+};
