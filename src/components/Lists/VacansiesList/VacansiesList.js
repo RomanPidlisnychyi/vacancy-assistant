@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { VacancyItem } from './VacancyItem';

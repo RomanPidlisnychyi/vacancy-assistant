@@ -1,49 +1,19 @@
 import { ListGroup, Button, Card, Accordion } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { BtnControl } from './BtnControl';
-import { IconBtn } from './BtnControl/IconBtn';
 import { getVacancy } from '../../../../store/selectors/vacancySelectors';
-import { onDeleteVacancy } from '../../../../store/operations/vacancyOperations';
-import { inputs } from '../../../../inputs';
+import { prepareVacancy } from '../../../../utils/prepareVacancy';
 import styles from './VacancyItem.module.css';
 
 export default function VacancyItem({ id }) {
-  const dispatch = useDispatch();
   const vacancy = useSelector(state => getVacancy(state, id));
 
-  // const myBtnInCard = inputs.filter(
-  //   input =>
-  //     input.name !== 'name' &&
-  //     input.name !== 'email' &&
-  //     input.name !== 'password' &&
-  //     input.name !== 'confirmPassword'
-  // );
-
-  const {
-    companyName,
-    URL,
-    date,
-    status,
-    position,
-    stack,
-    location,
-    phone,
-  } = vacancy;
-
-  const myBtnInCard = [
-    'companyName',
-    'URL',
-    'phone',
-    'position',
-    'stack',
-    'location',
-  ];
+  const { date, companyName, status } = vacancy;
 
   const myBtnInHeader = [status, 'delete'];
 
-  const handleBtn = () => {
-    dispatch(onDeleteVacancy(id));
-  };
+  const myBtnInCard = prepareVacancy(vacancy);
+
   return (
     <ListGroup.Item className={styles.item}>
       <Accordion>
@@ -58,11 +28,11 @@ export default function VacancyItem({ id }) {
               {date}
               {companyName}
             </Accordion.Toggle>
-            <BtnControl myBtn={myBtnInHeader} />{' '}
+            <BtnControl myBtn={myBtnInHeader} id={id} />
           </Card.Header>
           <Accordion.Collapse eventKey="0">
             <Card.Body className={styles.cardBody}>
-              <BtnControl myBtn={myBtnInCard} />
+              <BtnControl myBtn={myBtnInCard} id={id} />
             </Card.Body>
           </Accordion.Collapse>
         </Card>
