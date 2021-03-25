@@ -17,12 +17,11 @@ export default function MainInput({ handleModal }) {
     // handleModal();
   };
   return (
-    <InputGroup className="mb-3">
+    <InputGroup className="mb-3" className={styles.input}>
       <Form.Control
         value={filter}
         name="main"
         onChange={handleInput}
-        className={styles.input}
         placeholder="Company name"
         aria-label="Recipient's username"
         aria-describedby="basic-addon2"

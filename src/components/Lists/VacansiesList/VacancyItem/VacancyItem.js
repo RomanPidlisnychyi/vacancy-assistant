@@ -8,7 +8,7 @@ import styles from './VacancyItem.module.css';
 export default function VacancyItem({ id }) {
   const vacancy = useSelector(state => getVacancy(state, id));
 
-  const { date, companyName, status } = vacancy;
+  const { date, companyName, status, URL } = vacancy;
 
   const myBtnInHeader = [status, 'delete'];
 
@@ -26,7 +26,9 @@ export default function VacancyItem({ id }) {
               className={styles.mainButton}
             >
               {date}
-              {companyName}
+              <a href={URL} target="_blanck">
+                {companyName}
+              </a>
             </Accordion.Toggle>
             <BtnControl myBtn={myBtnInHeader} id={id} />
           </Card.Header>

@@ -2,6 +2,11 @@
 .cardHeader,
 .cardBody {
   padding: 0;
+  margin: 0;
+}
+
+.item {
+  border: none;
 }
 
 .cardHeader {
@@ -10,7 +15,7 @@
 
 .mainButton {
   display: flex;
-  width: 180px;
+  width: 75%;
 }
 
 .sent {
