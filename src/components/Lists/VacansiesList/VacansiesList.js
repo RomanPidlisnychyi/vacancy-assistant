@@ -8,7 +8,7 @@ import styles from './VacansiesList.module.css';
 export default function VacansiesList() {
   const vacancies = useSelector(getReversedVacancies);
   return (
-    <ListGroup>
+    <ListGroup className={styles.list}>
       {vacancies.length ? (
         vacancies.map(({ _id: id }) => <VacancyItem key={id} id={id} />)
       ) : (
