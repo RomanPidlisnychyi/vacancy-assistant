@@ -6,6 +6,7 @@
 }
 
 .item {
+  position: relative;
   border: none;
   width: 303px;
 }
@@ -17,6 +18,12 @@
 .mainButton {
   display: flex;
   width: 75%;
+}
+
+.date {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
 }
 
 .sent {

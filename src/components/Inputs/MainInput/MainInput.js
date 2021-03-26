@@ -14,7 +14,6 @@ export default function MainInput({ handleModal }) {
 
   const handleBtn = () => {
     dispatch(onRefresh()).then(handleModal());
-    // handleModal();
   };
   return (
     <InputGroup className="mb-3" className={styles.input}>

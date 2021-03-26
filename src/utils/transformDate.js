@@ -6,5 +6,6 @@ export const transformDate = date => {
   const currentFormatDay = String(day).padStart(2, '0');
   const currentFormatMounth = String(mounth).padStart(2, '0');
 
-  return currentFormatDay + '.' + currentFormatMounth;
+  return { day: currentFormatDay, mounth: currentFormatMounth };
+  // return currentFormatDay + '.' + currentFormatMounth;
 };

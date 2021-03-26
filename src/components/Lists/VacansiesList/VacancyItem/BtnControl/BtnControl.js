@@ -3,20 +3,26 @@ import { IconBtn } from './IconBtn';
 import { onDeleteVacancy } from '../../../../../store/operations/vacancyOperations';
 import styles from './BtnControl.module.css';
 
-export default function BtnControl({ myBtn, id }) {
+export default function BtnControl({ myBtn, id, handleKey, URL }) {
   const dispatch = useDispatch();
 
   const handleBtn = name => {
-    console.log('name', name);
-    if (name === 'delete') {
-      dispatch(onDeleteVacancy(id));
-    }
+    handleKey({ name });
+    // if (name === 'delete') {
+    //   dispatch(onDeleteVacancy(id));
+    // }
   };
   return (
     <div className={styles.container}>
-      {myBtn.map(name => (
-        <IconBtn key={name} handleBtn={handleBtn} name={name} />
-      ))}
+      {myBtn.map(name =>
+        URL ? (
+          <a href={URL} target="_blanck" key={name}>
+            <IconBtn handleBtn={handleBtn} name={name} />
+          </a>
+        ) : (
+          <IconBtn key={name} handleBtn={handleBtn} name={name} />
+        )
+      )}
     </div>
   );
 }

@@ -79,29 +79,30 @@
   background-image: url('../../../../../../images/compassOnHover.svg');
 }
 
-.delete,
+/* .delete,
 .interested,
 .sent,
 .accepted,
 .rejected {
   border: none;
-}
+} */
 
 .delete {
-  background: url('../../../../../../images/cancel-circle.svg') center / 60%
-    no-repeat;
+  background-image: url('../../../../../../images/cross.svg');
 }
 
 .delete:hover {
-  background-image: url('../../../../../../images/cancel-circleOnHover.svg');
+  background-image: url('../../../../../../images/crossOnHover.svg');
 }
 
 .interested {
   background-image: url('../../../../../../images/info.svg');
+  background-size: 120%;
 }
 
 .interested:hover {
   background-image: url('../../../../../../images/infoOnHover.svg');
+  background-size: 120%;
 }
 
 .sent {
