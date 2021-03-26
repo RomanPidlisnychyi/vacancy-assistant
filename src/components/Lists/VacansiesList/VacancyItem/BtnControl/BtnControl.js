@@ -3,11 +3,11 @@ import { IconBtn } from './IconBtn';
 import { onDeleteVacancy } from '../../../../../store/operations/vacancyOperations';
 import styles from './BtnControl.module.css';
 
-export default function BtnControl({ myBtn, id, handleKey, URL }) {
+export default function BtnControl({ myBtn, id, handleIconKey, URL }) {
   const dispatch = useDispatch();
 
   const handleBtn = name => {
-    handleKey({ name });
+    handleIconKey(name);
     // if (name === 'delete') {
     //   dispatch(onDeleteVacancy(id));
     // }

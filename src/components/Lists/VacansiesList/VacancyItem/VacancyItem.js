@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ListGroup, Button, Card, Accordion } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { BtnControl } from './BtnControl';
@@ -10,6 +11,8 @@ export default function VacancyItem({ id, eventKey, handleEventKey }) {
   const vacancy = useSelector(state => getVacancy(state, id));
   const statuses = useSelector(getStatuses);
 
+  const [iconKey, setIconKey] = useState(null);
+
   const { date, companyName, status, URL } = vacancy;
 
   const { day, mounth } = date;
@@ -18,18 +21,29 @@ export default function VacancyItem({ id, eventKey, handleEventKey }) {
 
   const myBtnInCard = prepareVacancy(vacancy);
 
-  const handleKey = ({ name }) => {
-    if (name) {
-      handleEventKey(`${id}${name}`);
+  const handleIconKey = name => {
+    handleEventKey(null);
+    if (name !== iconKey) {
+      setIconKey(name);
       return;
     }
+
+    setIconKey(null);
+  };
+
+  const handleKey = () => {
+    setIconKey(null);
     handleEventKey(id);
   };
   return (
     <ListGroup.Item className={styles.item}>
       <Card>
         <Card.Header className={`${styles.cardHeader} ${styles[status]}`}>
-          <BtnControl myBtn={['favorite']} id={id} handleKey={handleKey} />
+          <BtnControl
+            myBtn={['favorite']}
+            id={id}
+            handleIconKey={handleIconKey}
+          />
           <Button
             variant="link"
             onClick={handleKey}
@@ -38,30 +52,38 @@ export default function VacancyItem({ id, eventKey, handleEventKey }) {
             {day}.{mounth}
             {companyName}
           </Button>
-          <BtnControl myBtn={myBtnInHeader} id={id} handleKey={handleKey} />
+          <BtnControl
+            myBtn={myBtnInHeader}
+            id={id}
+            handleIconKey={handleIconKey}
+          />
         </Card.Header>
         {eventKey === id && (
           <Card.Body className={styles.cardBody}>
             <BtnControl
               myBtn={myBtnInCard}
               id={id}
-              handleKey={handleKey}
+              handleIconKey={handleIconKey}
               URL={URL}
             />
           </Card.Body>
         )}
 
-        {eventKey === `${id}${status}` && (
+        {iconKey === status && (
           <Card.Body className={styles.cardBody}>
-            <BtnControl myBtn={statuses} id={id} handleKey={handleKey} />
+            <BtnControl
+              myBtn={statuses}
+              id={id}
+              handleIconKey={handleIconKey}
+            />
           </Card.Body>
         )}
-        {eventKey === `${id}delete` && (
+        {iconKey === 'delete' && (
           <Card.Body className={styles.cardBody}>
             <BtnControl
               myBtn={['remove', 'cancel']}
               id={id}
-              handleKey={handleKey}
+              handleIconKey={handleIconKey}
             />
           </Card.Body>
         )}
