@@ -128,13 +128,20 @@ export const createVacancy = async vacancy => {
   try {
     const response = await axios.post('/vacancy', vacancy);
 
-    const { access } = response.data;
-
-    if (access) {
-      token.setAccessToken(access);
+    return response.data;
+  } catch (err) {
+    if (err.response && err.response.data && err.response.data.message) {
+      return err.response.data.message;
     }
+    return 'Проверьте интернет';
+  }
+};
 
-    return response.data.vacancy;
+export const updateVacancy = async (credentials, id) => {
+  try {
+    const response = await axios.patch(`/vacancy/${id}`, credentials);
+
+    return response.data;
   } catch (err) {
     if (err.response && err.response.data && err.response.data.message) {
       return err.response.data.message;

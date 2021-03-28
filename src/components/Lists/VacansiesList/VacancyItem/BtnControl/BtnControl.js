@@ -7,10 +7,15 @@ export default function BtnControl({ myBtn, id, handleIconKey, URL }) {
   const dispatch = useDispatch();
 
   const handleBtn = name => {
-    handleIconKey(name);
-    // if (name === 'delete') {
+    // if (name === 'remove') {
     //   dispatch(onDeleteVacancy(id));
+    //   return;
     // }
+    // if (name === 'favorite') {
+    //   dispatch(onDeleteVacancy(id));
+    //   return;
+    // }
+    handleIconKey(name);
   };
   return (
     <div className={styles.container}>

@@ -26,6 +26,7 @@
 .accepted,
 .rejected,
 .favorite,
+.favoriteActive,
 .update,
 .remove,
 .cancel,
@@ -145,6 +146,11 @@
 .favorite:hover {
   background-image: url('../../../../../../images/star-emptyOnHover.svg');
   background-size: 80%;
+}
+
+.favoriteActive {
+  composes: favorite;
+  background-image: url('../../../../../../images/star-full.svg');
 }
 
 .update {

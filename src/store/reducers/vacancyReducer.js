@@ -11,7 +11,7 @@ const createVacancy = (state, { payload }) => [...state, payload];
 
 const updateVacancy = (state, { payload }) =>
   state.map(vacancy => {
-    if (vacancy._id !== payload._id) {
+    if (vacancy._id === payload._id) {
       return payload;
     }
 
