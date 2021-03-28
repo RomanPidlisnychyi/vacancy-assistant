@@ -91,14 +91,32 @@
   background-image: url('../../../../../../images/compassOnHover.svg');
 }
 
+.remove,
+.accepted {
+  background-image: url('../../../../../../images/checkmark.svg');
+}
+
+.remove:hover {
+  background-image: url('../../../../../../images/checkmarkOnHover.svg');
+}
+
+.accepted:hover {
+  background-image: url('../../../../../../images/checkmarkOnStatusOnHover.svg');
+}
+
 .delete,
-.cancel {
+.cancel,
+.rejected {
   background-image: url('../../../../../../images/cross.svg');
 }
 
 .delete:hover,
 .cancel:hover {
   background-image: url('../../../../../../images/crossOnHover.svg');
+}
+
+.rejected:hover {
+  background-image: url('../../../../../../images/crossInStatusOnHover.svg');
 }
 
 .interested {
@@ -113,28 +131,16 @@
 
 .sent {
   background-image: url('../../../../../../images/mail.svg');
+  background-size: 60%;
 }
 
 .sent:hover {
   background-image: url('../../../../../../images/mailOnHover.svg');
+  background-size: 80%;
 }
 
-.accepted,
-.remove {
-  background-image: url('../../../../../../images/checkmark.svg');
-}
-
-.accepted:hover,
-.remove:hover {
-  background-image: url('../../../../../../images/checkmarkOnHover.svg');
-}
-
-.rejected {
-  background-image: url('../../../../../../images/cross.svg');
-}
-
-.rejected:hover {
-  background-image: url('../../../../../../images/crossOnHover.svg');
+.sent.active {
+  background-color: yellow;
 }
 
 .favorite {
@@ -150,6 +156,10 @@
 
 .favoriteActive {
   composes: favorite;
+  background-image: url('../../../../../../images/star-full.svg');
+}
+
+.favoriteActive:hover {
   background-image: url('../../../../../../images/star-full.svg');
 }
 

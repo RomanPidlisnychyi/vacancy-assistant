@@ -27,15 +27,28 @@ export default function VacancyItem({ id, eventKey, handleEventKey }) {
   const myBtnInCard = prepareVacancy(vacancy);
 
   const handleIconKey = name => {
-    if (name === 'remove') {
-      dispatch(onDeleteVacancy(id));
-      return;
+    handleEventKey(null);
+
+    const isStatusName = statuses.find(status => status === name);
+
+    if (isStatusName) {
+      if (status !== name) {
+        dispatch(onUpdateVacancy({ status: name }, id));
+        setIconKey(null);
+        return;
+      }
     }
+
     if (name === 'favorite' || name === 'favoriteActive') {
       dispatch(onUpdateVacancy({ favorite: !favorite }, id));
       return;
     }
-    handleEventKey(null);
+
+    if (name === 'remove') {
+      dispatch(onDeleteVacancy(id));
+      return;
+    }
+
     if (name !== iconKey) {
       setIconKey(name);
       return;
@@ -51,7 +64,7 @@ export default function VacancyItem({ id, eventKey, handleEventKey }) {
   return (
     <ListGroup.Item className={styles.item}>
       <Card>
-        <Card.Header className={`${styles.cardHeader} ${styles[status]}`}>
+        <Card.Header className={styles.cardHeader}>
           <BtnControl
             myBtn={[favoriteStatus]}
             id={id}

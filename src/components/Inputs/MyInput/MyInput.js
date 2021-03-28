@@ -13,6 +13,7 @@ export default function MyInput({
   validation,
   placeholder,
   message,
+  vacancy,
 }) {
   const dispatch = useDispatch();
 
@@ -29,7 +30,7 @@ export default function MyInput({
     if (name === 'password' && password) {
       setInput(password);
     }
-    if (name === 'companyName' && filter) {
+    if (name === 'companyName' && filter && !vacancy) {
       setInput(filter);
     }
   }, [dispatch, email, password, filter, name]);

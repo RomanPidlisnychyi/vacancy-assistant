@@ -11,9 +11,6 @@ export default function CreateVacancyForm() {
       input.name !== 'password' &&
       input.name !== 'confirmPassword'
   );
-  const handleSubmit = e => {
-    e.preventDefault();
-  };
 
   return (
     <Form className={styles.form}>

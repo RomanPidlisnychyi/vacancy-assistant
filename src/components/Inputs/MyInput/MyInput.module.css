@@ -29,6 +29,7 @@
 .companyName,
 .URL,
 .phone,
+.task,
 .position,
 .stack,
 .location {
@@ -49,6 +50,10 @@
 
 .phone {
   background-image: url('../../../images/phone.svg');
+}
+
+.task {
+  background-image: url('../../../images/pushpin.svg');
 }
 
 .position {

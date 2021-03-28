@@ -46,15 +46,3 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-.sent {
-  background-color: rgba(255, 255, 0, 0.15);
-}
-
-.accepted {
-  background-color: rgba(0, 128, 0, 0.15);
-}
-
-.rejected {
-  background-color: rgba(255, 0, 0, 0.15);
-}
