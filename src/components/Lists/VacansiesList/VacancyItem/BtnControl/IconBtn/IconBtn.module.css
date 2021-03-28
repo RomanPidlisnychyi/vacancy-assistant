@@ -1,8 +1,9 @@
 .password {
   padding: 15px;
+  margin-right: 5px;
   border: 1px solid #dbe1e6;
   border-radius: 50%;
-  background: url('../../../../../../images/passw.svg') center/60% no-repeat;
+  background: url('../../../../../../images/passw.svg') center/40% no-repeat;
 }
 
 .password:hover {
@@ -23,7 +24,13 @@
 .interested,
 .sent,
 .accepted,
-.rejected {
+.rejected,
+.favorite,
+.update,
+.remove,
+.cancel,
+.HRInterview,
+.TechnicalInterview {
   composes: password;
 }
 
@@ -47,11 +54,13 @@
   background-image: url('../../../../../../images/linkOnHover.svg');
 }
 
-.phone {
+.phone,
+.HRInterview {
   background-image: url('../../../../../../images/phone.svg');
 }
 
-.phone:hover {
+.phone:hover,
+.HRInterview:hover {
   background-image: url('../../../../../../images/phoneOnHover.svg');
 }
 
@@ -63,11 +72,13 @@
   background-image: url('../../../../../../images/user-tieOnHover.svg');
 }
 
-.stack {
+.stack,
+.TechnicalInterview {
   background-image: url('../../../../../../images/embed2.svg');
 }
 
-.stack:hover {
+.stack:hover,
+.TechnicalInterview:hover {
   background-image: url('../../../../../../images/embed2OnHover.svg');
 }
 
@@ -79,25 +90,19 @@
   background-image: url('../../../../../../images/compassOnHover.svg');
 }
 
-/* .delete,
-.interested,
-.sent,
-.accepted,
-.rejected {
-  border: none;
-} */
-
-.delete {
+.delete,
+.cancel {
   background-image: url('../../../../../../images/cross.svg');
 }
 
-.delete:hover {
+.delete:hover,
+.cancel:hover {
   background-image: url('../../../../../../images/crossOnHover.svg');
 }
 
 .interested {
   background-image: url('../../../../../../images/info.svg');
-  background-size: 120%;
+  background-size: 100%;
 }
 
 .interested:hover {
@@ -113,11 +118,13 @@
   background-image: url('../../../../../../images/mailOnHover.svg');
 }
 
-.accepted {
+.accepted,
+.remove {
   background-image: url('../../../../../../images/checkmark.svg');
 }
 
-.accepted:hover {
+.accepted:hover,
+.remove:hover {
   background-image: url('../../../../../../images/checkmarkOnHover.svg');
 }
 
@@ -127,4 +134,25 @@
 
 .rejected:hover {
   background-image: url('../../../../../../images/crossOnHover.svg');
+}
+
+.favorite {
+  background-image: url('../../../../../../images/star-empty.svg');
+  background-size: 60%;
+  border: none;
+}
+
+.favorite:hover {
+  background-image: url('../../../../../../images/star-emptyOnHover.svg');
+  background-size: 80%;
+}
+
+.update {
+  background-image: url('../../../../../../images/cloud-upload.svg');
+  background-size: 60%;
+}
+
+.update:hover {
+  background-image: url('../../../../../../images/cloud-uploadOnHover.svg');
+  background-size: 80%;
 }

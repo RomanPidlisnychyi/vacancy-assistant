@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ListGroup, Button, Card, Accordion } from 'react-bootstrap';
+import { ListGroup, Button, Card } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { BtnControl } from './BtnControl';
 import { getVacancy } from '../../../../store/selectors/vacancySelectors';
@@ -17,7 +17,7 @@ export default function VacancyItem({ id, eventKey, handleEventKey }) {
 
   const { day, mounth } = date;
 
-  const myBtnInHeader = [status, 'change', 'delete'];
+  const myBtnInHeader = [status, 'update', 'delete'];
 
   const myBtnInCard = prepareVacancy(vacancy);
 
@@ -44,19 +44,20 @@ export default function VacancyItem({ id, eventKey, handleEventKey }) {
             id={id}
             handleIconKey={handleIconKey}
           />
-          <Button
-            variant="link"
-            onClick={handleKey}
-            className={styles.mainButton}
-          >
-            {day}.{mounth}
-            {companyName}
-          </Button>
-          <BtnControl
-            myBtn={myBtnInHeader}
-            id={id}
-            handleIconKey={handleIconKey}
-          />
+          <button onClick={handleKey} className={styles.mainButton}>
+            <div className={styles.dateWrap}>
+              <div className={styles.day}>{day}</div>
+              <div className={styles.mounth}>{mounth}</div>
+            </div>
+            <span className={styles.text}>{companyName}</span>
+          </button>
+          <div className={styles.btnControlWrap}>
+            <BtnControl
+              myBtn={myBtnInHeader}
+              id={id}
+              handleIconKey={handleIconKey}
+            />
+          </div>
         </Card.Header>
         {eventKey === id && (
           <Card.Body className={styles.cardBody}>

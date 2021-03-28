@@ -6,7 +6,6 @@
 }
 
 .item {
-  position: relative;
   border: none;
   width: 303px;
 }
@@ -17,13 +16,35 @@
 
 .mainButton {
   display: flex;
-  width: 75%;
+  align-items: center;
+  width: 50%;
+  border: 1px solid #dbe1e6;
+  border-radius: 5px;
+  background-color: transparent;
 }
 
-.date {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
+.btnControlWrap {
+  width: 40%;
+}
+
+.dateWrap {
+  margin-right: 5px;
+}
+
+.day,
+.mounth {
+  font-size: 10px;
+  line-height: 10px;
+}
+
+.day {
+  border-bottom: 1px solid #0d1922;
+}
+
+.text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sent {
