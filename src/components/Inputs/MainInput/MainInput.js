@@ -16,7 +16,7 @@ export default function MainInput({ handleModal }) {
     dispatch(onRefresh()).then(handleModal());
   };
   return (
-    <InputGroup className="mb-3" className={styles.input}>
+    <InputGroup className={styles.input}>
       <Form.Control
         value={filter}
         name="main"

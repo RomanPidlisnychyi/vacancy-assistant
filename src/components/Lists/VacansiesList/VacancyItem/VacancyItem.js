@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { ListGroup, Card } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
+import { ListGroup, Card } from 'react-bootstrap';
 import { BtnControl } from './BtnControl';
 import { CardBody } from './CardBody';
 import { getVacancy } from '../../../../store/selectors/vacancySelectors';
 import { getStatuses } from '../../../../store/selectors/statusesSelectors';
-import { onUpdateVacancy } from '../../../../store/operations/vacancyOperations';
-import { onDeleteVacancy } from '../../../../store/operations/vacancyOperations';
+import {
+  onUpdateVacancy,
+  onDeleteVacancy,
+} from '../../../../store/operations/vacancyOperations';
 import { prepareVacancy } from '../../../../utils/prepareVacancy';
 import styles from './VacancyItem.module.css';
 
@@ -21,6 +23,7 @@ export default function VacancyItem({
   const statuses = useSelector(getStatuses);
 
   const [iconKey, setIconKey] = useState(null);
+  const [clickY, setClickY] = useState(0);
 
   const {
     date,
@@ -43,8 +46,10 @@ export default function VacancyItem({
   const myBtnInCard = prepareVacancy(vacancy);
 
   const scrollTo = () => {
+    const newValue = clickY - 200;
+
     document.querySelector('.list-group').scrollTo({
-      top: document.documentElement.scrollHeight,
+      top: newValue,
       behavior: 'smooth',
     });
   };
@@ -85,7 +90,8 @@ export default function VacancyItem({
     setIconKey(null);
   };
 
-  const handleKey = () => {
+  const handleKey = e => {
+    setClickY(e.clientY);
     setIconKey(null);
     handleEventKey(id);
   };
