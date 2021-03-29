@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ListGroup, Card } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { BtnControl } from './BtnControl';
+import { CardBody } from './CardBody';
 import { getVacancy } from '../../../../store/selectors/vacancySelectors';
 import { getStatuses } from '../../../../store/selectors/statusesSelectors';
 import { onUpdateVacancy } from '../../../../store/operations/vacancyOperations';
@@ -40,6 +41,13 @@ export default function VacancyItem({
   const myBtnInHeader = [status, 'update', 'delete'];
 
   const myBtnInCard = prepareVacancy(vacancy);
+
+  const scrollTo = () => {
+    document.querySelector('.list-group').scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'smooth',
+    });
+  };
 
   const handleIconKey = name => {
     handleEventKey(null);
@@ -111,36 +119,36 @@ export default function VacancyItem({
           </div>
         </Card.Header>
         {eventKey === id && (
-          <Card.Body className={styles.cardBody}>
+          <CardBody scrollTo={scrollTo}>
             <BtnControl
               myBtn={myBtnInCard}
               id={id}
               handleIconKey={handleIconKey}
               URL={URL}
             />
-          </Card.Body>
+          </CardBody>
         )}
 
         {iconKey === status && (
-          <Card.Body className={styles.cardBody}>
+          <CardBody scrollTo={scrollTo}>
             <BtnControl
               myBtn={statuses}
               id={id}
               handleIconKey={handleIconKey}
             />
-          </Card.Body>
+          </CardBody>
         )}
         {iconKey === 'delete' && (
-          <Card.Body className={styles.cardBody}>
+          <CardBody scrollTo={scrollTo}>
             <BtnControl
               myBtn={['remove', 'cancel']}
               id={id}
               handleIconKey={handleIconKey}
             />
-          </Card.Body>
+          </CardBody>
         )}
         {iconKey === 'stack' && (
-          <Card.Body className={styles.cardBody}>
+          <CardBody scrollTo={scrollTo}>
             <button
               className={styles.btnStack}
               type="button"
@@ -148,7 +156,7 @@ export default function VacancyItem({
             >
               {stack}
             </button>
-          </Card.Body>
+          </CardBody>
         )}
       </Card>
     </ListGroup.Item>
