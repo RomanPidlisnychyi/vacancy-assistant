@@ -14,13 +14,25 @@
   display: flex;
 }
 
-.mainButton {
+.mainButton,
+.active {
+  position: relative;
   display: flex;
   align-items: center;
   width: 50%;
   border: 1px solid #dbe1e6;
   border-radius: 5px;
   background-color: transparent;
+}
+
+.active:after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  top: 5px;
+  right: 5px;
+  background: url('../../../../images/pushpin.svg') center/100% no-repeat;
 }
 
 .btnControlWrap {
@@ -41,8 +53,19 @@
   border-bottom: 1px solid #0d1922;
 }
 
-.text {
+.text,
+.position {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.position {
+  position: absolute;
+  width: 100%;
+  text-align: right;
+  font-size: 10px;
+  line-height: 10px;
+  bottom: 0;
+  right: 0;
 }

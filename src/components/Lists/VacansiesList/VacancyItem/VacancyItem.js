@@ -9,14 +9,19 @@ import { onDeleteVacancy } from '../../../../store/operations/vacancyOperations'
 import { prepareVacancy } from '../../../../utils/prepareVacancy';
 import styles from './VacancyItem.module.css';
 
-export default function VacancyItem({ id, eventKey, handleEventKey }) {
+export default function VacancyItem({
+  id,
+  eventKey,
+  handleEventKey,
+  handleModal,
+}) {
   const dispatch = useDispatch();
   const vacancy = useSelector(state => getVacancy(state, id));
   const statuses = useSelector(getStatuses);
 
   const [iconKey, setIconKey] = useState(null);
 
-  const { date, companyName, status, URL, favorite } = vacancy;
+  const { date, companyName, status, URL, favorite, task, position } = vacancy;
 
   const { day, mounth } = date;
 
@@ -49,6 +54,11 @@ export default function VacancyItem({ id, eventKey, handleEventKey }) {
       return;
     }
 
+    if (name === 'update') {
+      handleModal(id);
+      return;
+    }
+
     if (name !== iconKey) {
       setIconKey(name);
       return;
@@ -70,12 +80,16 @@ export default function VacancyItem({ id, eventKey, handleEventKey }) {
             id={id}
             handleIconKey={handleIconKey}
           />
-          <button onClick={handleKey} className={styles.mainButton}>
+          <button
+            onClick={handleKey}
+            className={task ? styles.active : styles.mainButton}
+          >
             <div className={styles.dateWrap}>
               <div className={styles.day}>{day}</div>
               <div className={styles.mounth}>{mounth}</div>
             </div>
             <span className={styles.text}>{companyName}</span>
+            <span className={styles.position}>{position}</span>
           </button>
           <div className={styles.btnControlWrap}>
             <BtnControl

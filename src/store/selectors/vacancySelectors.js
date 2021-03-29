@@ -22,6 +22,9 @@ export const getVacancy = createSelector(
   getVacancies,
   (state, id) => id,
   (vacancies, id) => {
+    if (id === null) {
+      return null;
+    }
     const vacancy = vacancies.find(vacancy => vacancy._id === id);
     const currentFormatDate = transformDate(vacancy.date);
 

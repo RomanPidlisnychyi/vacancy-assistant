@@ -24,6 +24,9 @@ export default function MyInput({
   const [input, setInput] = useState('');
 
   useEffect(() => {
+    if (vacancy && vacancy[name]) {
+      setInput(vacancy[name]);
+    }
     if (name === 'email' && email) {
       setInput(email);
     }
@@ -33,7 +36,7 @@ export default function MyInput({
     if (name === 'companyName' && filter && !vacancy) {
       setInput(filter);
     }
-  }, [dispatch, email, password, filter, name]);
+  }, [dispatch, email, password, filter, name, vacancy]);
 
   const handleInput = e => setInput(e.target.value);
 

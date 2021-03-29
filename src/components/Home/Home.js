@@ -13,8 +13,14 @@ export default function Home() {
   const dispatch = useDispatch();
 
   const [isModal, setIsModal] = useState(false);
+  const [vacancyId, setVacancyId] = useState(null);
 
-  const handleModal = () => setIsModal(!isModal);
+  const handleModal = vacancyId => {
+    if (vacancyId) {
+      setVacancyId(vacancyId);
+    }
+    setIsModal(!isModal);
+  };
   const handleSubmit = () => {
     const { companyName } = inputsOnValidation;
 
@@ -23,19 +29,23 @@ export default function Home() {
     }
 
     let credantials;
+    let task;
 
     const allInputs = document.querySelectorAll('input');
 
     allInputs.forEach(input => {
       const { name, value } = input;
+      if (name === 'task') {
+        task = value === 'true' ? true : false;
+        return;
+      }
       if (!value) {
         return;
       }
-      credantials = { ...credantials, [name]: value };
+      credantials = { ...credantials, [name]: value, task };
     });
 
     delete credantials.main;
-
     dispatch(onCreateVacancy(credantials)).then(() => {
       dispatch(setFilter(''));
       handleModal();
@@ -45,7 +55,7 @@ export default function Home() {
     <div className={styles.container}>
       <main className={styles.main}>
         <MainInput handleModal={handleModal} />
-        <VacansiesList />
+        <VacansiesList handleModal={handleModal} />
       </main>
       {isModal && (
         <MyModal
@@ -53,7 +63,7 @@ export default function Home() {
           handleSubmit={handleSubmit}
           handleModal={handleModal}
         >
-          <CreateVacancyForm />
+          <CreateVacancyForm id={vacancyId} />
         </MyModal>
       )}
     </div>

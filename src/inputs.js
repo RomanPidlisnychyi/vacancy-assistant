@@ -52,8 +52,4 @@ export const inputs = [
     name: 'location',
     type: 'text',
   },
-  {
-    name: 'task',
-    type: 'checkbox',
-  },
 ];

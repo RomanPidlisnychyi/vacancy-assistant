@@ -7,6 +7,7 @@ export const prepareVacancy = vacancy => {
   delete preperedVacancy.userId;
   delete preperedVacancy.__v;
   delete preperedVacancy.favorite;
+  delete preperedVacancy.task;
 
   return Object.keys(preperedVacancy);
 };

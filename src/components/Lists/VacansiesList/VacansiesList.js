@@ -5,7 +5,7 @@ import { VacancyItem } from './VacancyItem';
 import { getReversedVacancies } from '../../../store/selectors/vacancySelectors';
 import styles from './VacansiesList.module.css';
 
-export default function VacansiesList() {
+export default function VacansiesList({ handleModal }) {
   const [eventKey, setEventKey] = useState(null);
   const vacancies = useSelector(getReversedVacancies);
 
@@ -26,6 +26,7 @@ export default function VacansiesList() {
             id={id}
             eventKey={eventKey}
             handleEventKey={handleEventKey}
+            handleModal={handleModal}
           />
         ))
       ) : (
