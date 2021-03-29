@@ -5,6 +5,7 @@ import { VacansiesList } from '../Lists';
 import { CreateVacancyForm } from '../Forms';
 import { MyModal } from '../Modal';
 import { onCreateVacancy } from '../../store/operations/vacancyOperations';
+import { onUpdateVacancy } from '../../store/operations/vacancyOperations';
 import { setFilter } from '../../store/actions/filterActions';
 import { inputsOnValidation } from '../../utils/validator';
 import styles from './Home.module.css';
@@ -46,6 +47,15 @@ export default function Home() {
     });
 
     delete credantials.main;
+
+    if (vacancyId) {
+      dispatch(onUpdateVacancy(credantials, vacancyId)).then(() => {
+        dispatch(setFilter(''));
+        handleModal();
+      });
+      return;
+    }
+
     dispatch(onCreateVacancy(credantials)).then(() => {
       dispatch(setFilter(''));
       handleModal();

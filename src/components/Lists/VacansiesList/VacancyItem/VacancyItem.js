@@ -21,7 +21,16 @@ export default function VacancyItem({
 
   const [iconKey, setIconKey] = useState(null);
 
-  const { date, companyName, status, URL, favorite, task, position } = vacancy;
+  const {
+    date,
+    companyName,
+    status,
+    URL,
+    favorite,
+    task,
+    position,
+    location,
+  } = vacancy;
 
   const { day, mounth } = date;
 
@@ -90,6 +99,7 @@ export default function VacancyItem({
             </div>
             <span className={styles.text}>{companyName}</span>
             <span className={styles.position}>{position}</span>
+            <span className={styles.location}>{location}</span>
           </button>
           <div className={styles.btnControlWrap}>
             <BtnControl
