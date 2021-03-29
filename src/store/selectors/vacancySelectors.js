@@ -1,11 +1,29 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { transformDate } from '../../utils/transformDate';
-import { getFilter } from './filterSelectors';
+import {
+  getFilter,
+  getFilterFavorite,
+  getFilterStatus,
+} from './filterSelectors';
 
 export const getVacancies = state => state.vacancies;
 
-export const getFiltredVacancies = createSelector(
+export const getFiltredByFavoriteVacancies = createSelector(
   getVacancies,
+  getFilterFavorite,
+  (vacancies, isFavorite) =>
+    vacancies.filter(vacancy => (isFavorite ? vacancy.favorite : vacancy))
+);
+
+export const getFiltredByStatusVacancies = createSelector(
+  getFiltredByFavoriteVacancies,
+  getFilterStatus,
+  (vacancies, status) =>
+    vacancies.filter(vacancy => (status ? vacancy.status === status : vacancy))
+);
+
+export const getFiltredVacancies = createSelector(
+  getFiltredByStatusVacancies,
   getFilter,
   (vacancies, filter) =>
     vacancies.filter(vacancy =>

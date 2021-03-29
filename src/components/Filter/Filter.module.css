@@ -1,0 +1,87 @@
+.container {
+  display: flex;
+  width: 303px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.btnContainer {
+  position: relative;
+  width: 90%;
+}
+
+.mainBtn,
+.batton {
+  height: 34px;
+  border: none;
+  outline: none;
+  text-align: left;
+  padding-left: 30px;
+}
+
+.mainBtn {
+  position: relative;
+  width: 100%;
+}
+
+.mainBtn.notAtive::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  background: url('../../images/play3.svg') right center / 100% no-repeat;
+}
+
+.btnWrap {
+  position: absolute;
+  top: 34px;
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+}
+
+.batton {
+  width: 100%;
+}
+
+.batton:hover {
+  cursor: pointer;
+  background-color: #b6b6b6;
+}
+
+.interested,
+.sent,
+.HRInterview,
+.TechnicalInterview,
+.rejected,
+.accepted {
+  background: url('../../images/info.svg') left 5px center/ 20px no-repeat;
+}
+
+.interested {
+  background: url('../../images/info.svg') left center/ 30px no-repeat;
+}
+
+.sent {
+  background-image: url('../../images/mail.svg');
+}
+
+.HRInterview {
+  background-image: url('../../images/phone.svg');
+}
+
+.TechnicalInterview {
+  background-image: url('../../images/embed2.svg');
+}
+
+.rejected {
+  background-image: url('../../images/cross.svg');
+}
+
+.accepted {
+  background-image: url('../../images/checkmark.svg');
+}

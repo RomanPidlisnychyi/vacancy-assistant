@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { MainInput } from '../Inputs';
+import { Filter } from '../Filter';
 import { VacansiesList } from '../Lists';
 import { CreateVacancyForm } from '../Forms';
 import { MyModal } from '../Modal';
@@ -65,6 +66,7 @@ export default function Home() {
     <div className={styles.container}>
       <main className={styles.main}>
         <MainInput handleModal={handleModal} />
+        <Filter />
         <VacansiesList handleModal={handleModal} />
       </main>
       {isModal && (

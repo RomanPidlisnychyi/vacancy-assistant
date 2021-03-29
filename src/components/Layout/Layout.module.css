@@ -3,13 +3,12 @@
   min-width: 320px;
   background: url('https://i.ibb.co/J29982W/mean-stack-developer-e1579706108805.jpg')
     center / cover no-repeat;
+  min-height: 100vh;
 }
 
 .viewContainer {
   display: flex;
   width: 320px;
-  height: 100vh;
   flex-direction: column;
   margin: 0 auto;
-  padding-top: 30px;
 }

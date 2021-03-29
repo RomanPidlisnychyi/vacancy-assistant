@@ -1,7 +1,7 @@
 import { IconBtn } from './IconBtn';
 import styles from './BtnControl.module.css';
 
-export default function BtnControl({ myBtn, id, handleIconKey, URL }) {
+export default function BtnControl({ myBtn, id = null, handleIconKey, URL }) {
   const handleBtn = name => {
     handleIconKey(name);
   };
