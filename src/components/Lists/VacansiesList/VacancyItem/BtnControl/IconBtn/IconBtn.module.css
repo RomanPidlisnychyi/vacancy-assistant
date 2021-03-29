@@ -1,4 +1,5 @@
 .password {
+  display: block;
   padding: 15px;
   margin-right: 5px;
   border: 1px solid #dbe1e6;
@@ -65,6 +66,10 @@
   background-image: url('../../../../../../images/phoneOnHover.svg');
 }
 
+.HRInterview.active {
+  background-color: #e0ffff;
+}
+
 .position {
   background-image: url('../../../../../../images/user-tie.svg');
 }
@@ -76,11 +81,16 @@
 .stack,
 .TechnicalInterview {
   background-image: url('../../../../../../images/embed2.svg');
+  /* background-size: 50%; */
 }
 
 .stack:hover,
 .TechnicalInterview:hover {
   background-image: url('../../../../../../images/embed2OnHover.svg');
+}
+
+.TechnicalInterview.active {
+  background-color: #cbf8f8;
 }
 
 .location {
@@ -89,6 +99,34 @@
 
 .location:hover {
   background-image: url('../../../../../../images/compassOnHover.svg');
+}
+
+.interested {
+  background-image: url('../../../../../../images/info.svg');
+  background-size: 100%;
+}
+
+.interested:hover {
+  background-image: url('../../../../../../images/infoOnHover.svg');
+  background-size: 120%;
+}
+
+.interested.active {
+  background-color: #fffafa;
+}
+
+.sent {
+  background-image: url('../../../../../../images/mail.svg');
+  background-size: 60%;
+}
+
+.sent:hover {
+  background-image: url('../../../../../../images/mailOnHover.svg');
+  background-size: 80%;
+}
+
+.sent.active {
+  background-color: #ffffe0;
 }
 
 .remove,
@@ -102,6 +140,10 @@
 
 .accepted:hover {
   background-image: url('../../../../../../images/checkmarkOnStatusOnHover.svg');
+}
+
+.accepted.active {
+  background-color: #7fffd4;
 }
 
 .delete,
@@ -119,28 +161,8 @@
   background-image: url('../../../../../../images/crossInStatusOnHover.svg');
 }
 
-.interested {
-  background-image: url('../../../../../../images/info.svg');
-  background-size: 100%;
-}
-
-.interested:hover {
-  background-image: url('../../../../../../images/infoOnHover.svg');
-  background-size: 120%;
-}
-
-.sent {
-  background-image: url('../../../../../../images/mail.svg');
-  background-size: 60%;
-}
-
-.sent:hover {
-  background-image: url('../../../../../../images/mailOnHover.svg');
-  background-size: 80%;
-}
-
-.sent.active {
-  background-color: yellow;
+.rejected.active {
+  background-color: #fa8072;
 }
 
 .favorite {

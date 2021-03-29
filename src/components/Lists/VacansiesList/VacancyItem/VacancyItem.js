@@ -25,6 +25,7 @@ export default function VacancyItem({
     date,
     companyName,
     status,
+    stack,
     URL,
     favorite,
     task,
@@ -136,6 +137,17 @@ export default function VacancyItem({
               id={id}
               handleIconKey={handleIconKey}
             />
+          </Card.Body>
+        )}
+        {iconKey === 'stack' && (
+          <Card.Body className={styles.cardBody}>
+            <button
+              className={styles.btnStack}
+              type="button"
+              onClick={handleKey}
+            >
+              {stack}
+            </button>
           </Card.Body>
         )}
       </Card>
