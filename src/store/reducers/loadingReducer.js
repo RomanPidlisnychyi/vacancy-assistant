@@ -15,6 +15,9 @@ import {
   recoveryRequest,
   recoverySuccess,
   recoveryError,
+  newPasswordRequest,
+  newPasswordSuccess,
+  newPasswordError,
 } from '../actions/authActions';
 import {
   createVacancyRequest,
@@ -41,6 +44,9 @@ const loading = createReducer(false, {
   [createVacancyRequest]: () => true,
   [createVacancySuccess]: () => false,
   [createVacancyError]: () => false,
+  [newPasswordRequest]: () => true,
+  [newPasswordSuccess]: () => false,
+  [newPasswordError]: () => false,
 });
 
 export default loading;

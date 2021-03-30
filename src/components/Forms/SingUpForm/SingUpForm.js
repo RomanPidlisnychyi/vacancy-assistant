@@ -50,6 +50,7 @@ export default function SingUpForm(props) {
 
   return (
     <Form className={styles.form} onSubmit={handleSubmit}>
+      <h6 className={styles.title}>Register</h6>
       {myInputs.map(input => (
         <MyInput key={input.name} {...input} />
       ))}

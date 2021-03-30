@@ -17,7 +17,7 @@ export const validator = (name, value) => {
 
       return isValid;
 
-    case 'recovery':
+    case 'recoveryPassword':
       isValid = value.length === 6;
 
       inputsOnValidation = { ...inputsOnValidation, [name]: isValid };

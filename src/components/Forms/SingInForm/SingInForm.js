@@ -38,6 +38,7 @@ export default function SingInForm() {
 
   return (
     <Form className={styles.form} onSubmit={handleSubmit}>
+      <h6 className={styles.title}>Login</h6>
       {myInputs.map(input => (
         <MyInput key={input.name} {...input} />
       ))}

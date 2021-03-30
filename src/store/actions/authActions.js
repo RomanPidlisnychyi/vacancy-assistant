@@ -21,3 +21,7 @@ export const refreshError = createAction('REFRESH_ERROR');
 export const recoveryRequest = createAction('RECOVERY_REQUEST');
 export const recoverySuccess = createAction('RECOVERY_SUCCESS');
 export const recoveryError = createAction('RECOVERY_ERROR');
+
+export const newPasswordRequest = createAction('NEW_PASSWORD_REQUEST');
+export const newPasswordSuccess = createAction('NEW_PASSWORD_SUCCESS');
+export const newPasswordError = createAction('NEW_PASSWORD_ERROR');

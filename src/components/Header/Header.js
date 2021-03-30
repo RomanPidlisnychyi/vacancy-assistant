@@ -18,7 +18,7 @@ export default function Header() {
       {loading && token && !name && (
         <Loader color="#79879a" height={24} width={45} />
       )}
-      {name && <UserMenu />}
+      {name && token && <UserMenu />}
     </header>
   );
 }

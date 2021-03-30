@@ -15,6 +15,9 @@ import {
   recoveryRequest,
   recoverySuccess,
   recoveryError,
+  newPasswordRequest,
+  newPasswordSuccess,
+  newPasswordError,
 } from '../actions/authActions';
 import { getAllVacancies, getStatuses } from '../actions/vacancyActions';
 import {
@@ -24,6 +27,7 @@ import {
   current,
   refresh,
   recovery,
+  newPassword,
   vacancies,
 } from '../../utils/apiUtils';
 
@@ -94,5 +98,17 @@ export const onRecovery = credentials => async dispatch => {
     return;
   }
 
-  dispatch(refreshError(payload));
+  dispatch(recoveryError(payload));
+};
+
+export const onNewPassword = credentials => async dispatch => {
+  dispatch(newPasswordRequest());
+  const payload = await newPassword(credentials);
+
+  if (payload.name) {
+    dispatch(newPasswordSuccess(payload));
+    return payload;
+  }
+
+  dispatch(newPasswordError(payload));
 };

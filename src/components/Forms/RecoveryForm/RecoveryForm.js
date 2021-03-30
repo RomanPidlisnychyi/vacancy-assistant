@@ -3,7 +3,10 @@ import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { MyInput } from '../../Inputs';
 import { MyButton } from '../../MyButton';
-import { onRecovery } from '../../../store/operations/authOperations';
+import {
+  onRecovery,
+  onNewPassword,
+} from '../../../store/operations/authOperations';
 import { getEmail } from '../../../store/selectors/authSelectors';
 import { logoutSuccess } from '../../../store/actions/authActions';
 import { inputsOnValidation } from '../../../utils/validator';
@@ -19,16 +22,21 @@ export default function RecoveryForm(props) {
   const myInputs = inputs.filter(
     input =>
       input.name === 'email' ||
-      input.name === 'recovery' ||
+      input.name === 'recoveryPassword' ||
       input.name === 'password' ||
       input.name === 'confirmPassword'
   );
 
   const validation = () => {
     if (emailInRedux) {
-      const { name, email, password, confirmPassword } = inputsOnValidation;
+      const {
+        email,
+        recoveryPassword,
+        password,
+        confirmPassword,
+      } = inputsOnValidation;
 
-      if (!name || !email || !password || !confirmPassword) {
+      if (!email || !recoveryPassword || !password || !confirmPassword) {
         return false;
       }
 
@@ -63,11 +71,23 @@ export default function RecoveryForm(props) {
 
     delete credantials.confirmPassword;
 
+    if (emailInRedux) {
+      dispatch(onNewPassword(credantials)).then(response => {
+        if (response && response.password) {
+          setTimeout(() => {
+            props.history.push('/login');
+          }, 1000);
+        }
+      });
+      return;
+    }
+
     dispatch(onRecovery(credantials));
   };
 
   return (
     <Form className={styles.form} onSubmit={handleSubmit}>
+      <h6 className={styles.title}>Recovery</h6>
       {emailInRedux ? (
         myInputs.map(input => <MyInput key={input.name} {...input} />)
       ) : (

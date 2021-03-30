@@ -25,7 +25,7 @@
 }
 
 .confirmPassword,
-.recovery,
+.recoveryPassword,
 .name,
 .companyName,
 .URL,
@@ -37,7 +37,7 @@
   composes: password;
 }
 
-.recovery {
+.recoveryPassword {
   background-image: url('../../../images/unlocked.svg');
 }
 

@@ -4,6 +4,11 @@
   margin: 0 auto;
 }
 
+.title {
+  padding-left: 50px;
+  color: #ffffff80;
+}
+
 .link {
   display: block;
   margin: 15px auto 0;

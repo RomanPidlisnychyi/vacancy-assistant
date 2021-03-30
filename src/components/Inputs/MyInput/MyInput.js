@@ -59,7 +59,7 @@ export default function MyInput({
         placeholder={placeholder ? placeholder : name}
         onChange={handleInput}
         value={input}
-        maxLength={name === 'recovery' ? 6 : false}
+        maxLength={name === 'recoveryPassword' ? 6 : undefined}
       />
       {notValid && input && message && <IncorrectInputValue title={message} />}
     </Form.Group>

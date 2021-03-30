@@ -12,7 +12,7 @@ export const inputs = [
     validation: true,
   },
   {
-    name: 'recovery',
+    name: 'recoveryPassword',
     type: 'text',
     placeholder: 'recovery password',
     message: 'Pass length must = 6!',

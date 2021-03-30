@@ -33,10 +33,7 @@ const user = createReducer(initialUserState, {
   [currentError]: () => initialUserState,
   [logoutSuccess]: () => initialUserState,
   [refreshError]: () => initialUserState,
-  [recoverySuccess]: (state, { payload }) => ({
-    ...state,
-    email: payload.email,
-  }),
+  [recoverySuccess]: (_, { payload }) => payload,
 });
 
 const tokens = createReducer(

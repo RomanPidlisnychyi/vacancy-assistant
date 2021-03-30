@@ -23,6 +23,7 @@ export default function CreateVacancyForm({ id = null }) {
     input =>
       input.name !== 'name' &&
       input.name !== 'email' &&
+      input.name !== 'recoveryPassword' &&
       input.name !== 'password' &&
       input.name !== 'confirmPassword'
   );
