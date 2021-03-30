@@ -45,6 +45,9 @@ export default function SingInForm() {
       <Link className={styles.link} to="/register">
         SingUp
       </Link>
+      <Link className={styles.link} to="/recovery">
+        Forgot password?
+      </Link>
     </Form>
   );
 }

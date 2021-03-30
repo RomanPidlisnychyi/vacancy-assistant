@@ -1,21 +1,7 @@
 .form {
   padding: 10px;
-  width: 100%;
-  position: relative;
-  z-index: 1;
-}
-
-.form::after {
-  position: absolute;
-  content: '';
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.4);
+  max-width: 450px;
+  margin: 0 auto;
 }
 
 .link {

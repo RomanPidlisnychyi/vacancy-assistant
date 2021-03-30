@@ -12,6 +12,9 @@ import {
   refreshRequest,
   refreshSuccess,
   refreshError,
+  recoveryRequest,
+  recoverySuccess,
+  recoveryError,
 } from '../actions/authActions';
 import { getAllVacancies, getStatuses } from '../actions/vacancyActions';
 import {
@@ -20,6 +23,7 @@ import {
   logout,
   current,
   refresh,
+  recovery,
   vacancies,
 } from '../../utils/apiUtils';
 
@@ -75,6 +79,18 @@ export const onRefresh = () => async dispatch => {
 
   if (payload && payload.status && payload.status < 400) {
     dispatch(refreshSuccess(payload.data.access));
+    return;
+  }
+
+  dispatch(refreshError(payload));
+};
+
+export const onRecovery = credentials => async dispatch => {
+  dispatch(recoveryRequest());
+  const payload = await recovery(credentials);
+
+  if (payload && payload.status && payload.status < 400) {
+    dispatch(recoverySuccess(payload.data));
     return;
   }
 

@@ -12,6 +12,9 @@ import {
   refreshRequest,
   refreshSuccess,
   refreshError,
+  recoveryRequest,
+  recoverySuccess,
+  recoveryError,
 } from '../actions/authActions';
 import {
   createVacancyRequest,
@@ -32,6 +35,9 @@ const loading = createReducer(false, {
   [refreshRequest]: () => true,
   [refreshSuccess]: () => false,
   [refreshError]: () => false,
+  [recoveryRequest]: () => true,
+  [recoverySuccess]: () => false,
+  [recoveryError]: () => false,
   [createVacancyRequest]: () => true,
   [createVacancySuccess]: () => false,
   [createVacancyError]: () => false,

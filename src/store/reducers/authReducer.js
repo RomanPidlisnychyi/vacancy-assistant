@@ -10,6 +10,8 @@ import {
   currentError,
   refreshError,
   refreshSuccess,
+  recoverySuccess,
+  recoveryError,
 } from '../actions/authActions';
 
 const isLocalTokens = localStorage.getItem('vacancyTokens');
@@ -31,6 +33,10 @@ const user = createReducer(initialUserState, {
   [currentError]: () => initialUserState,
   [logoutSuccess]: () => initialUserState,
   [refreshError]: () => initialUserState,
+  [recoverySuccess]: (state, { payload }) => ({
+    ...state,
+    email: payload.email,
+  }),
 });
 
 const tokens = createReducer(
@@ -52,6 +58,7 @@ const err = createReducer(null, {
   [loginError]: (_, { payload }) => payload,
   [loginSuccess]: () => null,
   [currentError]: (_, { payload }) => payload,
+  [recoveryError]: (_, { payload }) => payload,
 });
 
 export default combineReducers({

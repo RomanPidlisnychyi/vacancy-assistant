@@ -11,8 +11,10 @@ export default function Header() {
   const loading = useSelector(isLoading);
   const token = useSelector(getToken);
   return (
-    <header className={styles.header}>
-      <Logo />
+    <header
+      className={token ? styles.header : `${styles.header} ${styles.solo}`}
+    >
+      <Logo token={token} />
       {loading && token && !name && (
         <Loader color="#79879a" height={24} width={45} />
       )}

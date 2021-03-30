@@ -111,6 +111,19 @@ export const refresh = async () => {
   }
 };
 
+export const recovery = async credentials => {
+  try {
+    const response = await axios.post('/auth/setRecoveryPassword', credentials);
+
+    return response;
+  } catch (err) {
+    if (err.response && err.response.data && err.response.data.message) {
+      return err.response.data.message;
+    }
+    return 'Проверьте интернет';
+  }
+};
+
 export const vacancies = async () => {
   try {
     const response = await axios.get('/vacancy');

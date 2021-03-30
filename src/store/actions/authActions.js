@@ -17,3 +17,7 @@ export const currentError = createAction('CURRENT_ERROR');
 export const refreshRequest = createAction('REFRESH_REQUEST');
 export const refreshSuccess = createAction('REFRESH_SUCCESS');
 export const refreshError = createAction('REFRESH_ERROR');
+
+export const recoveryRequest = createAction('RECOVERY_REQUEST');
+export const recoverySuccess = createAction('RECOVERY_SUCCESS');
+export const recoveryError = createAction('RECOVERY_ERROR');

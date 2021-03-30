@@ -3,18 +3,23 @@
 }
 
 .name {
-  color: #79879a;
-  border-right: 1px solid #79879a;
+  color: #ffffff80;
+  border-right: 1px solid #ffffff80;
   padding-right: 15px;
   margin-right: 15px;
 }
 
 .button {
-  color: #79879a;
+  color: #ffffff80;
   border: none;
   padding-left: 20px;
   min-height: 20px;
-  background: url(../../images/logout.svg) left no-repeat;
+  background: url('../../images/log-out.svg') left center / 20px no-repeat;
+}
+
+.button:hover {
+  color: #fff;
+  background-image: url('../../images/log-outOnHover.svg');
 }
 
 .buttonTitle {
