@@ -85,3 +85,14 @@
 .accepted {
   background-image: url('../../images/checkmark.svg');
 }
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 600px;
+  }
+
+  .btnContainer {
+    position: relative;
+    width: 95%;
+  }
+}

@@ -23,3 +23,9 @@
 .list::-webkit-scrollbar-thumb:hover {
   cursor: pointer;
 }
+
+@media screen and (min-width: 768px) {
+  .list {
+    width: 600px;
+  }
+}

@@ -92,3 +92,14 @@
   height: 36px;
   background-color: transparent;
 }
+
+@media screen and (min-width: 768px) {
+  .item {
+    width: 593px;
+  }
+
+  .mainButton,
+  .active {
+    width: 60%;
+  }
+}
