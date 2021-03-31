@@ -12,6 +12,8 @@ import {
   refreshSuccess,
   recoverySuccess,
   recoveryError,
+  newPasswordError,
+  cleanErrSuccess,
 } from '../actions/authActions';
 
 const isLocalTokens = localStorage.getItem('vacancyTokens');
@@ -56,6 +58,8 @@ const err = createReducer(null, {
   [loginSuccess]: () => null,
   [currentError]: (_, { payload }) => payload,
   [recoveryError]: (_, { payload }) => payload,
+  [newPasswordError]: (_, { payload }) => payload,
+  [cleanErrSuccess]: () => null,
 });
 
 export default combineReducers({

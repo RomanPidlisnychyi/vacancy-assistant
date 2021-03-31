@@ -25,7 +25,7 @@ export const validator = (name, value) => {
       return isValid;
 
     case 'password':
-      isValid = value.length > 7 ? value : false;
+      isValid = value.length > 5 ? value : false;
 
       inputsOnValidation = { ...inputsOnValidation, [name]: isValid };
 

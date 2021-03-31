@@ -1,32 +1,34 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ListGroup, Card } from 'react-bootstrap';
+// import { CSSTransition } from 'react-transition-group';
 import { BtnControl } from './BtnControl';
 import { CardBody } from './CardBody';
-import { getVacancy } from '../../../../store/selectors/vacancySelectors';
 import { getStatuses } from '../../../../store/selectors/statusesSelectors';
 import {
   onUpdateVacancy,
   onDeleteVacancy,
 } from '../../../../store/operations/vacancyOperations';
 import { prepareVacancy } from '../../../../utils/prepareVacancy';
+import { transformDate } from '../../../../utils/transformDate';
 import styles from './VacancyItem.module.css';
 
 export default function VacancyItem({
-  id,
+  vacancy,
   eventKey,
   handleEventKey,
   handleModal,
 }) {
   const dispatch = useDispatch();
-  const vacancy = useSelector(state => getVacancy(state, id));
-  const statuses = useSelector(getStatuses);
 
+  const statuses = useSelector(getStatuses);
   const [iconKey, setIconKey] = useState(null);
   const [clickY, setClickY] = useState(0);
 
+  const date = transformDate(vacancy.date);
+
   const {
-    date,
+    _id: id,
     companyName,
     status,
     stack,
@@ -96,7 +98,26 @@ export default function VacancyItem({
     handleEventKey(id);
   };
   return (
-    <ListGroup.Item className={styles.item}>
+    // <CSSTransition
+    //   in={iconKey === 'delete'}
+    //   appear
+    //   classNames={styles}
+    //   timeout={250}
+    // >
+    <ListGroup.Item
+      className={
+        iconKey === 'delete' ? `${styles.item} ${styles.onTrash}` : styles.item
+      }
+    >
+      {iconKey === 'delete' && (
+        <div className={styles.trash}>
+          <BtnControl
+            myBtn={['remove']}
+            id={id}
+            handleIconKey={handleIconKey}
+          />
+        </div>
+      )}
       <Card>
         <Card.Header className={styles.cardHeader}>
           <BtnControl
@@ -144,15 +165,6 @@ export default function VacancyItem({
             />
           </CardBody>
         )}
-        {iconKey === 'delete' && (
-          <CardBody scrollTo={scrollTo}>
-            <BtnControl
-              myBtn={['remove', 'cancel']}
-              id={id}
-              handleIconKey={handleIconKey}
-            />
-          </CardBody>
-        )}
         {iconKey === 'stack' && (
           <CardBody scrollTo={scrollTo}>
             <button
@@ -166,5 +178,6 @@ export default function VacancyItem({
         )}
       </Card>
     </ListGroup.Item>
+    // </CSSTransition>
   );
 }

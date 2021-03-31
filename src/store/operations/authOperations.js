@@ -18,6 +18,7 @@ import {
   newPasswordRequest,
   newPasswordSuccess,
   newPasswordError,
+  cleanErrSuccess,
 } from '../actions/authActions';
 import { getAllVacancies, getStatuses } from '../actions/vacancyActions';
 import {
@@ -111,4 +112,10 @@ export const onNewPassword = credentials => async dispatch => {
   }
 
   dispatch(newPasswordError(payload));
+};
+
+export const onCleanErr = () => dispatch => {
+  setTimeout(() => {
+    dispatch(cleanErrSuccess());
+  }, 2000);
 };

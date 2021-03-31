@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { VacancyItem } from './VacancyItem';
 import { getReversedVacancies } from '../../../store/selectors/vacancySelectors';
 import styles from './VacansiesList.module.css';
@@ -18,20 +19,27 @@ export default function VacansiesList({ handleModal }) {
     setEventKey(null);
   };
   return (
-    <ListGroup className={styles.list}>
-      {vacancies.length ? (
-        vacancies.map(({ _id: id }) => (
-          <VacancyItem
-            key={id}
-            id={id}
-            eventKey={eventKey}
-            handleEventKey={handleEventKey}
-            handleModal={handleModal}
-          />
+    <TransitionGroup
+      component={ListGroup}
+      className={styles.list}
+      in={vacancies.length}
+    >
+      {vacancies && vacancies.length ? (
+        vacancies.map(vacancy => (
+          <CSSTransition key={vacancy._id} classNames={styles} timeout={250}>
+            <VacancyItem
+              vacancy={vacancy}
+              eventKey={eventKey}
+              handleEventKey={handleEventKey}
+              handleModal={handleModal}
+            />
+          </CSSTransition>
         ))
       ) : (
-        <ListGroup.Item>Nothing to show for you...</ListGroup.Item>
+        <CSSTransition classNames={styles} timeout={250}>
+          <ListGroup.Item>Nothing to show for you...</ListGroup.Item>
+        </CSSTransition>
       )}
-    </ListGroup>
+    </TransitionGroup>
   );
 }

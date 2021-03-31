@@ -21,7 +21,7 @@ export const inputs = [
   {
     name: 'password',
     type: 'password',
-    message: 'Pass length must be > 7!',
+    message: 'Pass length must be > 5!',
     validation: true,
   },
   {

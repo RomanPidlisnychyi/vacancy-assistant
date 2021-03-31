@@ -1,6 +1,5 @@
 import { Suspense, useEffect } from 'react';
 import { Switch } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group';
 import { Header } from './Header';
 import { LayoutApp, LayoutView } from './Layout';
 import { PublicRoute, PrivateRoute } from './Routes';

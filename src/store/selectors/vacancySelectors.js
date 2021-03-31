@@ -38,12 +38,16 @@ export const getReversedVacancies = createSelector(
 
 export const getVacancy = createSelector(
   getVacancies,
-  (state, id) => id,
+  (_, id) => id,
   (vacancies, id) => {
     if (id === null) {
       return null;
     }
     const vacancy = vacancies.find(vacancy => vacancy._id === id);
+
+    if (!vacancy) {
+      return null;
+    }
     const currentFormatDate = transformDate(vacancy.date);
 
     return { ...vacancy, date: currentFormatDate };
