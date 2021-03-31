@@ -22,7 +22,6 @@ export default function VacancyItem({
   const dispatch = useDispatch();
 
   const statuses = useSelector(getStatuses);
-  const [iconKey, setIconKey] = useState(null);
   const [clickY, setClickY] = useState(0);
 
   const date = transformDate(vacancy.date);
@@ -58,14 +57,12 @@ export default function VacancyItem({
   };
 
   const handleIconKey = name => {
-    handleEventKey(null);
-
     const isStatusName = statuses.find(status => status === name);
 
     if (isStatusName) {
       if (status !== name) {
         dispatch(onUpdateVacancy({ status: name }, id));
-        setIconKey(null);
+        handleEventKey(null);
         return;
       }
     }
@@ -85,17 +82,16 @@ export default function VacancyItem({
       return;
     }
 
-    if (name !== iconKey) {
-      setIconKey(name);
+    if (name !== eventKey) {
+      handleEventKey(`${id}${name}`);
       return;
     }
 
-    setIconKey(null);
+    handleEventKey(null);
   };
 
   const handleKey = e => {
     setClickY(e.clientY);
-    setIconKey(null);
     handleEventKey(id);
   };
   return (
@@ -107,10 +103,12 @@ export default function VacancyItem({
     // >
     <ListGroup.Item
       className={
-        iconKey === 'delete' ? `${styles.item} ${styles.onTrash}` : styles.item
+        eventKey === `${id}delete`
+          ? `${styles.item} ${styles.onTrash}`
+          : styles.item
       }
     >
-      {iconKey === 'delete' && (
+      {eventKey === `${id}delete` && (
         <div className={styles.trash}>
           <BtnControl
             myBtn={['remove']}
@@ -157,7 +155,7 @@ export default function VacancyItem({
           </CardBody>
         )}
 
-        {iconKey === status && (
+        {eventKey === `${id}${status}` && (
           <CardBody scrollTo={scrollTo}>
             <BtnControl
               myBtn={statuses}
@@ -166,7 +164,7 @@ export default function VacancyItem({
             />
           </CardBody>
         )}
-        {iconKey === 'stack' && (
+        {eventKey === `${id}stack` && (
           <CardBody scrollTo={scrollTo}>
             <button
               className={styles.btnStack}
@@ -177,7 +175,7 @@ export default function VacancyItem({
             </button>
           </CardBody>
         )}
-        {iconKey === 'phone' && (
+        {eventKey === `${id}phone` && (
           <CardBody scrollTo={scrollTo}>
             <button
               className={styles.btnStack}
