@@ -32,6 +32,7 @@ export default function VacancyItem({
     companyName,
     status,
     stack,
+    phone,
     URL,
     favorite,
     task,
@@ -173,6 +174,17 @@ export default function VacancyItem({
               onClick={handleKey}
             >
               {stack}
+            </button>
+          </CardBody>
+        )}
+        {iconKey === 'phone' && (
+          <CardBody scrollTo={scrollTo}>
+            <button
+              className={styles.btnStack}
+              type="button"
+              onClick={handleKey}
+            >
+              {phone}
             </button>
           </CardBody>
         )}

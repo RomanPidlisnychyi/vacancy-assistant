@@ -51,6 +51,7 @@ export default function Home() {
 
     if (vacancyId) {
       dispatch(onUpdateVacancy(credantials, vacancyId)).then(() => {
+        setVacancyId(null);
         dispatch(setFilter(''));
         handleModal();
       });
